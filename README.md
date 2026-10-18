@@ -4,16 +4,29 @@
 
 Demo de una propiedad ficticia con dos experiencias que usan el mismo modelo 3D:
 
-- **Ver construcción:** secuencia de 22 segundos, seis etapas, pausa, reinicio y control manual del progreso.
-- **Explorar la casa:** maqueta giratoria, plano superior y siete ambientes seleccionables, con transición a su interior y vista que se puede girar.
+- **Ver construcción:** secuencia de 48 segundos y nueve etapas, con excavación ilustrativa, armaduras, hormigón, ladrillos por hiladas, cubierta, instalaciones y terminaciones. Permite pausar, reiniciar y recorrer el progreso en ambas direcciones.
+- **Explorar la casa:** maqueta que se puede girar, desplazar y acercar; plano superior; siete ambientes seleccionables y recorrido a pie entre ellos, con colisiones contra paredes, vidrios y muebles principales.
 
-Incluye techo opcional, iluminación de día o atardecer, controles por teclado y una interfaz adaptable a celular. `Escape` vuelve del interior al plano. Las superficies y la distribución son ilustrativas.
+Incluye texturas procedurales, muebles con bordes suavizados, techo opcional, iluminación de día o atardecer, un plano de ubicación y pantalla completa cuando el navegador la admite. Las superficies, la distribución y la secuencia constructiva son ilustrativas.
+
+## Controles
+
+| Vista | PC | Celular |
+| --- | --- | --- |
+| Maqueta | Arrastrar para girar; botón derecho para desplazar; rueda para acercar | Un dedo para girar; dos dedos para desplazar y acercar |
+| Plano superior | Arrastrar para desplazar; seleccionar un ambiente | Arrastrar el plano y tocar un ambiente |
+| Dentro de la casa | Arrastrar para mirar; **WASD o flechas** para caminar | Arrastrar para mirar; mantener pulsadas las flechas del visor para caminar |
+| Cambiar de ambiente | Lista o pequeño plano de ubicación | Lista o pequeño plano de ubicación |
+| Volver al plano | **Escape**, botón Plano o Volver al plano | Botón Plano o Volver al plano |
+
+La abertura de la galería permite caminar al patio. Para moverse con el teclado, entrar primero a un ambiente. Durante la transición de cámara el movimiento se habilita al llegar.
 
 ## Documentación
 
 - [Por dónde empezar](POR_DONDE_EMPEZAR.md): pasos y ficha para elegir y preparar la primera propiedad real.
 - [Guía de producción real](GUIA_PRODUCCION_REAL.md): fotos comunes, panoramas 360°, captura espacial, alternativas y arquitectura propuesta.
 - [Informe del prototipo](INFORME_DEL_PROTOTIPO.md): qué se construyó, cómo funciona, archivos entregados y verificaciones realizadas.
+- [Mejoras de construcción y recorrido](MEJORAS_CONSTRUCCION_Y_RECORRIDO.md): cambios de esta versión, controles y alcance del realismo.
 
 ## Publicación en GitHub Pages
 
@@ -42,6 +55,11 @@ El prototipo se sirve por HTTP porque usa módulos JavaScript. Todas las depende
 - `dist/index.html`: interfaz y contenido.
 - `dist/styles.css`: diseño y adaptación a pantallas pequeñas.
 - `dist/app.js`: modelo 3D, construcción, selección y cámaras.
+- `dist/construction.js`: etapas, armaduras, estructura, mampostería y elementos temporales de obra.
+- `dist/walk-navigation.js` y `dist/movement.js`: controles interiores y colisiones.
+- `dist/scene-materials.js`: texturas generadas localmente.
 - `dist/vendor/`: Three.js 0.164.1 (licencia MIT) y DM Sans (licencia OFL); licencias incluidas.
+
+Las pruebas de colisión se ejecutan con `npm test` (Node.js 20 o posterior, sin instalar dependencias). GitHub Actions comprueba la sintaxis de los módulos y ejecuta esas pruebas antes de publicar.
 
 La casa es un modelo geométrico creado para esta demostración. Para una versión de una propiedad real, reemplazar la distribución y el mobiliario por un modelo construido a partir del plano y las referencias de esa propiedad. El acabado actual es una maqueta estilizada, no un render fotográfico ni un levantamiento arquitectónico.

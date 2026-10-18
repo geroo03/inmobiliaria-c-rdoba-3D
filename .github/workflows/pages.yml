@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'dist/**'
+      - 'tests/**'
+      - 'package.json'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -35,8 +37,10 @@ jobs:
           test -s dist/styles.css
           test -s dist/vendor/three.module.js
           test -s dist/vendor/OrbitControls.js
+          test -s dist/vendor/RoundedBoxGeometry.js
           test -s dist/vendor/dm-sans.ttf
-          node --input-type=module --check < dist/app.js
+          for script in dist/*.js; do node --check "$script"; done
+          node --test tests/*.test.mjs
 
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5

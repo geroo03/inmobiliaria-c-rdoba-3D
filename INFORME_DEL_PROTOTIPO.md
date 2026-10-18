@@ -12,28 +12,33 @@ La demo de este repositorio se publica en **[Habita · GitHub Pages](https://ger
 
 ## 2. Experiencia de construcción
 
-El modelo aparece por grupos, siguiendo seis etapas:
+El modelo se construye siguiendo nueve etapas:
 
-1. Cimientos y base.
-2. Muros y estructura.
-3. Aberturas y vidrios.
-4. Cubierta y terminaciones.
-5. Interiores y mobiliario.
-6. Jardín y detalles.
+1. Replanteo y excavación.
+2. Armaduras y cimientos.
+3. Estructura y contrapiso.
+4. Mampostería por hiladas.
+5. Losa y cubierta.
+6. Instalaciones y revoques.
+7. Pisos y aberturas.
+8. Equipamiento interior.
+9. Patio y jardín.
 
-La secuencia está programada con una duración nominal de 22 segundos. Tiene reproducción, pausa, reinicio, una barra para recorrer el progreso y botones para ir al final de cada etapa. Desde ahí se puede pasar a explorar la casa terminada.
+La secuencia está programada con una duración nominal de 48 segundos. Tiene reproducción, pausa, reinicio, una barra para recorrer el progreso y botones para ir al cierre de cada etapa. Desde ahí se puede pasar a explorar la casa terminada.
 
-Es una animación conceptual: los elementos aparecen mediante cambios de escala y posición. No representa una planificación de obra ni un registro de una construcción real. El tiempo efectivo de reproducción puede variar si el equipo renderiza con lentitud.
+La animación incorpora armaduras, hormigón, columnas, vigas, andamios, apuntalamiento, encofrado de cubierta y cañerías. La mampostería se coloca por hiladas alternadas y respeta las puertas y ventanas del modelo final. La cubierta se oculta durante las terminaciones para permitir ver el interior. El progreso es reversible: al retroceder la barra se reconstruye el estado correspondiente.
+
+La secuencia sigue siendo ilustrativa: no representa una planificación de obra, un cálculo estructural ni un registro de la construcción real de una propiedad. El tiempo efectivo de reproducción puede variar si el equipo renderiza con lentitud.
 
 ## 3. Experiencia de exploración
 
 Se puede alternar entre una maqueta 3D giratoria y una vista superior del mismo modelo. Los siete ambientes disponibles son living, cocina, comedor, dormitorio principal, segundo dormitorio, baño y patio con terraza.
 
-La selección funciona desde la lista, los nombres sobre la maqueta y las superficies seleccionables del plano. La cámara se desplaza a una posición interior predefinida para ese ambiente. Después se puede girar la vista, cambiar de ambiente o volver al plano. La tecla `Escape` también vuelve al plano.
+La selección funciona desde la lista, los nombres sobre la maqueta, las superficies seleccionables del plano y el plano de ubicación del recorrido. La cámara se desplaza a una posición inicial de ese ambiente. Después se puede mirar arrastrando y caminar con WASD, las flechas del teclado o los botones del visor. La tecla `Escape` vuelve al plano.
 
 Se agregaron techo opcional en la vista general, iluminación de día o atardecer, un botón para restablecer la cámara y una ficha que identifica el ambiente seleccionado. Las paredes se ocultan durante la transición y se restauran al llegar, para evitar que tapen el movimiento de cámara.
 
-El recorrido actual permite mirar desde puntos fijos y saltar entre ellos. Todavía no hay desplazamiento libre con colisiones, fotografías reales ni panoramas 360° de una propiedad.
+El recorrido permite desplazamiento horizontal con colisiones contra paredes, vidrios cerrados y muebles principales. Se puede atravesar las puertas y la abertura al patio. El plano de ubicación y el nombre del ambiente se actualizan al caminar. La maqueta general también admite desplazamiento, y el visor se puede ampliar a pantalla completa cuando el navegador lo admite. Todavía no incluye fotografías reales ni panoramas 360° de una propiedad.
 
 ## 4. Cómo se hizo
 
@@ -42,9 +47,11 @@ El recorrido actual permite mirar desde puntos fijos y saltar entre ellos. Todav
 | Interfaz | HTML, CSS y JavaScript sin un framework de aplicación |
 | Visualización | Three.js 0.164.1 sobre WebGL |
 | Modelo | Geometría creada por código: paredes, pisos, aberturas, muebles y vegetación |
-| Cámara general | OrbitControls, con límites de giro y acercamiento |
+| Cámara general | OrbitControls, con giro, desplazamiento y acercamiento |
+| Recorrido interior | Cámara a altura fija, teclado, arrastre táctil, botones y colisiones por subpasos |
 | Selección | Botones y detección de superficies con raycasting |
-| Animación | Seis grupos de objetos, controlados por un progreso común |
+| Animación | Nueve etapas, geometría temporal de obra y ladrillos instanciados |
+| Materiales | Texturas procedurales de madera, revoque y hormigón; bordes suaves en muebles textiles |
 | Adaptación de pantalla | CSS responsive, tamaño del lienzo y encuadres según el ancho |
 | Recursos | Three.js y tipografía DM Sans guardados localmente, con sus licencias |
 | Alojamiento de este repositorio | GitHub Pages, con publicación automática mediante GitHub Actions |
@@ -61,6 +68,11 @@ La aplicación no requiere una base de datos, un servidor de negocio ni claves d
 | [dist/index.html](dist/index.html) | Estructura, textos y controles de la interfaz |
 | [dist/styles.css](dist/styles.css) | Estilo visual y adaptación a pantallas pequeñas |
 | [dist/app.js](dist/app.js) | Modelo, cámaras, selección, iluminación y animación |
+| [dist/construction.js](dist/construction.js) | Secuencia constructiva y piezas temporales de obra |
+| [dist/walk-navigation.js](dist/walk-navigation.js) | Recorrido con teclado, ratón y controles táctiles |
+| [dist/movement.js](dist/movement.js) | Colisiones y deslizamiento junto a obstáculos |
+| [dist/scene-materials.js](dist/scene-materials.js) | Materiales y texturas locales |
+| [tests/movement.test.mjs](tests/movement.test.mjs) | Pruebas automatizadas de colisión |
 | [dist/favicon.svg](dist/favicon.svg) | Icono de Habita |
 | `dist/vendor/` | Librería 3D, controles, tipografía y licencias |
 | [ABRIR_PROTOTIPO.command](ABRIR_PROTOTIPO.command) | Lanzador local para Mac |
@@ -71,7 +83,7 @@ Esta copia reúne la aplicación y los documentos de producción. El despliegue 
 
 ## 6. Comprobaciones realizadas
 
-Durante el desarrollo se ejecutaron comprobaciones automatizadas con Playwright y Chrome, acompañadas de capturas de pantalla para revisar el aspecto visual:
+En la versión inicial se ejecutaron las siguientes comprobaciones con Playwright y Chrome. La ampliación del recorrido y de la construcción se documenta por separado en [Mejoras de construcción y recorrido](MEJORAS_CONSTRUCCION_Y_RECORRIDO.md):
 
 | N.º | Comprobación | Resultado observado |
 | --- | --- | --- |
