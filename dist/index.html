@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5ef">
+  <meta name="description" content="Explorá una casa de ejemplo en 3D: mirá su construcción y entrá a cada ambiente desde el plano.">
+  <title>Habita — Una casa, todas las perspectivas</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head>
+<body>
+  <header class="header">
+    <a class="brand" href="./" aria-label="Habita, inicio">
+      <svg viewBox="0 0 32 36" fill="none" aria-hidden="true"><path d="M3 33V15a13 13 0 0 1 26 0v18M10 33V16a6 6 0 0 1 12 0v17M0 33h32" stroke="currentColor" stroke-width="1.8"/></svg>
+      <span>habita<span class="brand-dot">.</span></span>
+    </a>
+    <span class="brand-tagline">ESPACIOS PARA IMAGINAR</span>
+    <span class="demo-badge"><i></i> Experiencia de ejemplo</span>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow">ARQUITECTURA QUE PODÉS RECORRER</p><h1>Una casa. <em>Todas las perspectivas.</em></h1></div>
+      <p class="intro-copy">Mirá cómo toma forma.<br>Después, descubrí cada rincón.</p>
+    </section>
+
+    <section class="workbench" aria-label="Visor interactivo de la propiedad">
+      <div class="toolbar">
+        <div class="mode-tabs" role="group" aria-label="Experiencia">
+          <button id="construction-mode" class="mode-tab" aria-pressed="false"><span>01</span> Ver construcción</button>
+          <button id="explore-mode" class="mode-tab active" aria-pressed="true"><span>02</span> Explorar la casa</button>
+        </div>
+        <button id="light-toggle" class="light-toggle" aria-pressed="false"><span aria-hidden="true">☼</span><span id="light-label">Luz de día</span></button>
+      </div>
+
+      <div class="workspace">
+        <aside class="sidebar">
+          <div class="property-heading"><p class="eyebrow">LA PROPIEDAD</p><span class="small-badge">DEMO</span></div>
+          <h2>Casa Patio</h2>
+          <p class="property-description">Líneas simples. Espacios para vivir.</p>
+          <dl class="stats"><div><dt>Superficie interior</dt><dd>120 <small>m²</small></dd></div><div><dt>Dormitorios</dt><dd>02</dd></div><div><dt>Baños</dt><dd>01</dd></div></dl>
+
+          <div id="explore-panel">
+            <div class="section-label"><h3>Elegí un ambiente</h3><span>07</span></div>
+            <div id="room-list" class="room-list"></div>
+            <button id="return-button" class="return-button" hidden><span aria-hidden="true">↖</span> Volver al plano</button>
+            <p class="sidebar-note">También podés tocar los nombres<br>directamente sobre la casa.</p>
+          </div>
+
+          <div id="construction-panel" hidden>
+            <div class="section-label"><h3>Del plano a tu casa</h3><span>06</span></div>
+            <p class="construction-copy">Una mirada al proceso, paso a paso.</p>
+            <ol id="phase-list" class="phase-list"></ol>
+            <button id="explore-cta" class="primary-button">Entrar a la casa <span aria-hidden="true">↗</span></button>
+          </div>
+          <div class="sidebar-footer"><span class="tiny-house" aria-hidden="true">⌂</span> Una nueva manera de conocer tu hogar.</div>
+        </aside>
+
+        <div class="viewer-column">
+          <div id="stage" class="stage">
+            <canvas id="scene" aria-label="Maqueta 3D de Casa Patio. Elegí un ambiente con los botones de la lista para visitarlo."></canvas>
+            <div id="loading" class="loading"><span class="loading-ring"></span>Preparando tu próxima perspectiva…</div>
+            <div id="error-message" class="error-message" role="alert" hidden><strong>No pudimos iniciar la vista 3D.</strong><p>Probá abrir el prototipo en Chrome, Edge o Safari con la aceleración gráfica activada.</p><button id="reload-button">Volver a intentar</button></div>
+            <div class="stage-heading"><span class="live-dot"></span><span id="view-caption">MAQUETA INTERACTIVA</span></div>
+            <div class="view-controls" role="group" aria-label="Tipo de vista">
+              <button id="overview-button" class="view-button active" aria-pressed="true">◈ <span>Vista 3D</span></button>
+              <button id="plan-button" class="view-button" aria-pressed="false">⊞ <span>Plano</span></button>
+              <button id="roof-button" class="view-button" aria-pressed="false">⌂ <span>Techo</span></button>
+            </div>
+            <div id="room-labels" class="room-labels"></div>
+            <div id="room-card" class="room-card" hidden><span class="room-card-kicker">ESTÁS EN</span><h3 id="room-card-name"></h3><p id="room-card-description"></p><span id="room-card-area"></span></div>
+            <div id="compass" class="compass" aria-hidden="true"><span>N</span><svg viewBox="0 0 26 26"><path d="M13 3l5 18-5-4-5 4z" fill="currentColor"/></svg></div>
+            <div class="stage-bottom"><span id="gesture-hint"><span aria-hidden="true">↔</span> Arrastrá para girar · Acercá con la rueda</span><span class="model-label">CASA PATIO / 01</span></div>
+            <button id="reset-button" class="reset-button" aria-label="Restablecer la vista" title="Restablecer la vista">↺</button>
+          </div>
+
+          <div id="explore-footer" class="viewer-footer"><div class="footer-icon" aria-hidden="true">↗</div><p><strong>Tu recorrido empieza donde vos quieras.</strong><span>Seleccioná un ambiente para descubrirlo desde adentro.</span></p><span class="footer-counter">01 — 07</span></div>
+          <div id="timeline" class="timeline" hidden>
+            <button id="play-button" class="play-button" aria-label="Reproducir construcción">▶</button>
+            <div class="timeline-main"><div class="timeline-text"><strong id="phase-title">Casa terminada</strong><span id="progress-text">100%</span></div><input id="build-progress" type="range" min="0" max="1000" value="1000" step="1" aria-label="Progreso de la construcción"><div class="timeline-ticks"><span>Terreno</span><span>Estructura</span><span>Tu casa</span></div></div>
+            <button id="restart-button" class="restart-button" aria-label="Reiniciar construcción" title="Reiniciar">↺</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="page-footer"><p>Imaginá el espacio. <em>Sentite en casa.</em></p><span>Propiedad ficticia · Distribución y superficies ilustrativas</span></footer>
+  </main>
+  <noscript><p class="noscript">Activá JavaScript para usar la animación y el recorrido de la casa.</p></noscript>
+  <script type="module">
+    import('./app.js').catch(error => {
+      console.error(error);
+      document.getElementById('loading').hidden = true;
+      document.getElementById('error-message').hidden = false;
+    });
+    document.getElementById('reload-button').addEventListener('click', () => location.reload());
+  </script>
+</body>
+</html>

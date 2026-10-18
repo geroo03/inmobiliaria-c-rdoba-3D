@@ -1,0 +1,51 @@
+name: Publicar en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'dist/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Publicar prototipo
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v6
+
+      - name: Comprobar archivos del sitio
+        run: |
+          test -s dist/index.html
+          test -s dist/styles.css
+          test -s dist/vendor/three.module.js
+          test -s dist/vendor/OrbitControls.js
+          test -s dist/vendor/dm-sans.ttf
+          node --input-type=module --check < dist/app.js
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Preparar archivos públicos
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v4
