@@ -32,7 +32,7 @@ Tres panoramas de un mismo lugar, **Lythwood**, una casa de campo fotografiada p
 
 - **Mirar alrededor** arrastrando, con inercia al soltar. La vista sigue al dedo o al mouse.
 - **Acercar y alejar** con los botones, pellizcando en el celular, o con la rueda en pantalla completa o con Ctrl. Fuera de la pantalla completa la rueda desplaza la página, para no trabarla.
-- **Giro automático al abrir:** la vista gira despacio hasta la primera interacción, ideal para una presentación. Se pausa y se reanuda con su botón. Se desactiva si el sistema pide reducir el movimiento.
+- **Giro automático al abrir:** la vista gira despacio hasta la primera interacción, ideal para una presentación. Con el mouse sobre un punto de paso se detiene, para que sea fácil tocarlo. Se pausa y se reanuda con su botón, y se desactiva si el sistema pide reducir el movimiento.
 - **Pasar de un ambiente a otro** con los puntos sobre el panorama o con las tarjetas de ambientes, que muestran el progreso («2 de 3 ambientes»).
 - **Pantalla completa**, con un modo ampliado alternativo cuando el navegador no la permite (iPhone).
 - **Compartir** el enlace de un ambiente, **abrirlo en el celular** con el QR del encabezado y **consultar por WhatsApp**.

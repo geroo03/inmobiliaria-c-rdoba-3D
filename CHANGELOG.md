@@ -10,6 +10,10 @@ Cambios de cada versión, de la más reciente a la más antigua, con las verific
 - «360°» en el menú común de las cuatro páginas; enlace desde la Visita real; vista previa para WhatsApp, QR y «Consultar por WhatsApp» también en la página nueva.
 - 4 pruebas nuevas del recorrido (29 en total) y verificación de que el menú enlaza todas las páginas.
 
+### Corregido
+- El giro automático se pausa con el mouse sobre un punto de paso, para poder tocarlo sin perseguirlo.
+- La vista inicial ya no retrocede unos grados al abrir: el primer cuadro podía traer una marca de tiempo anterior a la carga y el giro automático la tomaba como tiempo negativo.
+
 ### Verificado
 - 29 pruebas automatizadas con `npm test`.
 - Orientación comprobada en el navegador: al entrar a la terraza la casa queda centrada y el punto «Ir al living» cae sobre la entrada; en el living, «Salir a la terraza» cae sobre los ventanales.

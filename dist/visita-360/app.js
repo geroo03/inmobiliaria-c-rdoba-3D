@@ -17,7 +17,7 @@ scene3d.add(new THREE.Mesh(geometry, material));
 const loader = new THREE.TextureLoader(), previews = new Map();
 let current = readScene(location.search), view = { yaw: current.start.yaw, pitch: current.start.pitch, fov: 75 };
 let velocity = { yaw: 0, pitch: 0 }, autoRotate = !reducedMotion, loadVersion = 0, fullTexture = null, toastTimer;
-let dragging = null, pinchDistance = 0;
+let dragging = null, pinchDistance = 0, hoveringSpot = false;
 const pointers = new Map(), hotspotButtons = new Map(), visited = new Set();
 
 function loadTexture(url) {
@@ -49,12 +49,15 @@ function renderUI() {
   $('#whatsapp').href = whatsappLink(`Hola, vi el recorrido 360° de «${property.name}» y quiero hacer una consulta. Estaba viendo: ${current.name}. ${sceneURL(location.href, current).href}`);
   $('#auto').setAttribute('aria-pressed', String(autoRotate)); $('#auto').textContent = autoRotate ? '❚❚' : '▶';
   $('#auto').setAttribute('aria-label', autoRotate ? 'Detener el giro automático' : 'Girar automáticamente');
-  hotspotButtons.clear();
+  hotspotButtons.clear(); hoveringSpot = false;
   $('#hotspots').innerHTML = '';
   for (const spot of current.hotspots) {
     const button = document.createElement('button');
     button.className = 'hotspot'; button.dataset.scene = spot.scene; button.hidden = true; button.innerHTML = `<span aria-hidden="true">↗</span>${spot.label}`;
     button.addEventListener('click', () => go(spot.scene)); $('#hotspots').append(button); hotspotButtons.set(button, spot);
+    // Con el mouse encima, el giro automático se pausa para que el punto quede quieto y sea fácil de tocar.
+    button.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') hoveringSpot = true; });
+    button.addEventListener('pointerleave', () => { hoveringSpot = false; });
   }
 }
 
@@ -157,9 +160,9 @@ function resize() { const { width, height } = stage.getBoundingClientRect(); ren
 new ResizeObserver(resize).observe(stage); resize();
 let last = performance.now();
 function frame(now) {
-  requestAnimationFrame(frame); const dt = Math.min(.05, (now - last) / 1000); last = now; if (document.hidden) return;
+  requestAnimationFrame(frame); const dt = Math.min(.05, Math.max(0, (now - last) / 1000)); last = now; // el primer cuadro puede traer una marca anterior a «last» if (document.hidden) return;
   if (!dragging) { view.yaw += velocity.yaw; view.pitch = clampPitch(view.pitch + velocity.pitch); velocity.yaw *= .9; velocity.pitch *= .9; }
-  if (autoRotate && !dragging) view.yaw += dt * 4;
+  if (autoRotate && !dragging && !hoveringSpot) view.yaw += dt * 4;
   view.yaw = normalizeYaw(view.yaw);
   camera.fov = view.fov; camera.updateProjectionMatrix(); camera.lookAt(target.set(...direction(view.yaw, view.pitch)));
   renderer.render(scene3d, camera);
