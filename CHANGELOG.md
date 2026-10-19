@@ -2,6 +2,27 @@
 
 Cambios de cada versión, de la más reciente a la más antigua, con las verificaciones hechas al cerrarla. Cada versión corresponde a un commit de `main`.
 
+## Correcciones visuales, encabezado común y licencia · 18/10/2026
+
+### Corregido
+- Noveno: en iPad y celulares la maqueta quedaba cortada a los costados. Ahora la cámara se aleja lo necesario según la proporción del visor.
+- Noveno: las etiquetas 9A, 9B y 9C se pisaban en pantallas angostas. Ahora se muestran compactas cuando el visor mide menos de 600 px.
+- Noveno: en tablet, el rótulo de la vista quedaba desalineado debajo de los botones.
+- Visita real: en celular, el título del ambiente quedaba montado sobre el borde de la foto. Ahora va en la franja superior, alineado con los controles.
+- Casa Patio: en celular y tablet, el rótulo del visor quedaba pegado a la barra de vistas y, durante la caminata, tapado por la tarjeta del ambiente. En la caminata ahora tiene fondo para leerse sobre la escena.
+
+### Cambiado
+- Encabezado común en las tres demos: mismo logo, mismo lema («Espacios para vivir») y un menú para pasar de una a otra (`dist/shared.css`).
+- Visita real: nombre de la propiedad, contadores, texto alternativo de las fotos, mobiliario y dibujo del plano salen de `data.js`. El visor ya no tiene datos de la propiedad escritos en el código.
+- Pruebas de la Visita real independientes de la propiedad, más dos nuevas: plano dentro del lienzo y visor sin datos fijos.
+
+### Agregado
+- `LICENSE`: todos los derechos reservados, con excepciones para Three.js, DM Sans y las fotos.
+
+### Verificado
+- 19 pruebas automatizadas con `npm test`.
+- Revisión visual con Playwright en Chrome y WebKit (motor de Safari): 3 demos en 7 tamaños (1440 × 900, 1280 × 720, iPad vertical y horizontal, iPhone 14, Pixel 7 y 360 px), sin errores de JavaScript, recursos rotos, desbordes ni textos recortados. 26 interacciones recorridas en laptop y iPhone.
+
 ## Documentación integral · 18/10/2026
 
 ### Cambiado

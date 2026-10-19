@@ -35,6 +35,7 @@ jobs:
         run: |
           test -s dist/index.html
           test -s dist/styles.css
+          test -s dist/shared.css
           test -s dist/vendor/three.module.js
           test -s dist/vendor/OrbitControls.js
           test -s dist/vendor/RoundedBoxGeometry.js

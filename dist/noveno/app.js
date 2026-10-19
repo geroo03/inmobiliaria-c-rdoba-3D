@@ -90,6 +90,18 @@ function applyVisibility(){
     model.lamps.forEach(light=>{light.intensity=state.view==='recorrido'&&id===state.unit.id?(state.evening?5:2.5):0;});
   }
 }
+// Aleja la cámara lo justo para que la maqueta entre completa, sea cual sea la proporción del visor.
+const fitCamera=new THREE.PerspectiveCamera(),fitBox=new THREE.Box3(),fitPoint=new THREE.Vector3();
+function framed(position,target,subjects){
+  fitBox.makeEmpty();for(const subject of subjects)fitBox.expandByObject(subject);
+  const to=new THREE.Vector3(...target),arm=new THREE.Vector3(...position).sub(to);fitCamera.copy(camera,false);let scale=1;
+  for(let pass=0;pass<4;pass++){
+    fitCamera.position.copy(arm).multiplyScalar(scale).add(to);fitCamera.lookAt(to);fitCamera.updateMatrixWorld();
+    let extent=0;for(let corner=0;corner<8;corner++){fitPoint.set(corner&1?fitBox.max.x:fitBox.min.x,corner&2?fitBox.max.y:fitBox.min.y,corner&4?fitBox.max.z:fitBox.min.z).project(fitCamera);extent=Math.max(extent,Math.abs(fitPoint.x),Math.abs(fitPoint.y));}
+    if(extent<=.9)break;scale*=extent/.9;
+  }
+  return fitCamera.position.toArray();
+}
 function setView(view,top=false,room=null,instant=false){
   walker.deactivate();$('walk-ui').hidden=true;$('room-info').hidden=view!=='recorrido';
   state.view=view;state.top=top;state.room=null;delete stage.dataset.walkX;delete stage.dataset.walkZ;delete stage.dataset.room;
@@ -109,6 +121,7 @@ function setView(view,top=false,room=null,instant=false){
     position=[offset+room.eye[0],1.7,room.eye[1]];target=[offset+room.look[0],room.id==='balcony'?-6:1.15,room.look[1]];
     updateRoom(room);done=()=>{controls.enabled=false;walker.activate();$('walk-ui').hidden=false;applyVisibility();};
   }
+  if(view!=='recorrido'){const subjects=view==='unidad'?[models.get(state.unit.id).root]:[...(view==='edificio'?[building.root]:[]),...[...models.values()].map(model=>model.root)];position=framed(position,target,subjects);controls.maxDistance=Math.max(controls.maxDistance,Math.hypot(position[0]-target[0],position[1]-target[1],position[2]-target[2])*1.2);}
   const captions={edificio:'NOVENO / EDIFICIO Y ENTORNO',piso:'PLANTA COMPLETA / PISO 09',unidad:`DEPARTAMENTO ${state.unit.label} / ${top?'PLANO SUPERIOR':'VISTA 3D'}`,recorrido:'RECORRIDO A PIE / PISO 09'};
   $('caption').textContent=captions[view];
   $('hint').textContent=view==='recorrido'?(matchMedia('(pointer:coarse)').matches?'Arrastrá para mirar · Flechas para caminar':'Arrastrá para mirar · WASD / flechas para caminar · Esc: plano'):top?'Arrastrá para mover el plano · Rueda o dos dedos para acercar':matchMedia('(pointer:coarse)').matches?'Un dedo: girar · Dos dedos: mover y acercar':'Arrastrá: girar · Botón derecho: mover · Rueda: acercar';
@@ -150,7 +163,7 @@ canvas.addEventListener('pointerup',event=>{
   pointerStart=null;
 });
 canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();walker.deactivate();$('error').hidden=false;});
-function resize(){const {width,height}=stage.getBoundingClientRect();renderer.setSize(width,height,false);camera.aspect=width/height;camera.updateProjectionMatrix();}
+function resize(){const {width,height}=stage.getBoundingClientRect();stage.classList.toggle('compact',width<600);renderer.setSize(width,height,false);camera.aspect=width/height;camera.updateProjectionMatrix();}
 new ResizeObserver(resize).observe(stage);resize();
 const projected=new THREE.Vector3();let last=performance.now();
 function render(now){

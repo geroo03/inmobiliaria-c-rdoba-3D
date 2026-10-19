@@ -32,6 +32,7 @@ Son 18 ambientes en total. Las superficies salen de las dimensiones generales de
 - **Balcón transitable:** se sale desde el living; las barandas limitan el paso y se ve el entorno debajo.
 - **Iluminación:** día o atardecer, con texturas, reflejos y luces interiores.
 - **Compartir:** cada unidad y cada vista tienen un enlace propio (ver más abajo).
+- **Encuadre automático:** la cámara se aleja lo necesario para que el edificio, el piso o la unidad entren completos en cualquier pantalla. En visores angostos, las etiquetas 9A, 9B y 9C se muestran compactas para no pisarse.
 
 ### Controles
 
@@ -77,7 +78,7 @@ Cambiar nombres o cargar una foto sobre estos modelos no convierte las unidades 
 | [dist/noveno/units.js](../../dist/noveno/units.js) | Datos de las unidades, distribución, huecos de puertas y lectura de enlaces |
 | [dist/noveno/model.js](../../dist/noveno/model.js) | Departamentos, mobiliario, edificio y obstáculos de movimiento |
 | [dist/noveno/city.js](../../dist/noveno/city.js) | Entorno urbano ficticio a nivel de calle |
-| [dist/noveno/app.js](../../dist/noveno/app.js) | Selección de unidad, cámaras, recorrido, planos y compartir |
+| [dist/noveno/app.js](../../dist/noveno/app.js) | Selección de unidad, cámaras con encuadre automático, recorrido, planos y compartir |
 | [dist/noveno/index.html](../../dist/noveno/index.html) · [styles.css](../../dist/noveno/styles.css) | Interfaz adaptable a PC y celular |
 | [dist/walk-navigation.js](../../dist/walk-navigation.js) | Recorrido a pie compartido con Casa Patio; acepta límites por unidad |
 | [tests/noveno.test.mjs](../../tests/noveno.test.mjs) | 6 pruebas: enlaces, valores inválidos, puntos de entrada, puertas, balcón y separación entre unidades |

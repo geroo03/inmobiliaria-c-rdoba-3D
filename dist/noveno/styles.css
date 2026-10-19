@@ -8,3 +8,8 @@
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.loading>span{animation:none}}
 
 .photo-tour-link{display:flex;align-items:center;gap:15px;padding:13px 17px;border:1px solid #d8ddcf;background:#edf1e5;border-radius:9px;margin-bottom:22px;color:#315442}.photo-tour-link img{width:70px;height:49px;object-fit:cover;border-radius:5px;flex-shrink:0}.photo-tour-link>span{display:flex;flex-direction:column;gap:6px}.photo-tour-link strong{font-size:12px;font-weight:550}.photo-tour-link small{font-size:9px;color:#7c8a70}.photo-tour-link>b{font-size:11px;font-weight:500;margin-left:auto;white-space:nowrap}@media(max-width:760px){.photo-tour-link{padding:11px;gap:10px;margin-bottom:18px}.photo-tour-link img{width:51px;height:47px}.photo-tour-link strong{font-size:10px;line-height:1.5}.photo-tour-link small{font-size:8px;line-height:1.6}.photo-tour-link>b{font-size:9px}.photo-tour-link>span{gap:3px}}
+
+/* Etiquetas compactas cuando el visor es angosto, para que 9A, 9B y 9C no se pisen. */
+.stage.compact .unit-pin{min-width:0;padding:7px 11px;text-align:center}.stage.compact .unit-pin strong{font-size:18px}.stage.compact .unit-pin span{display:none}
+/* En tablet, el rótulo de la vista queda alineado con los botones del visor. */
+@media(max-width:1100px) and (min-width:761px){.view-caption{top:21px}.room-info{top:62px}}

@@ -13,7 +13,7 @@ Un departamento que existe, mostrado **ambiente por ambiente con sus fotos**: el
 
 Casa Patio y Noveno muestran qué se puede hacer con un modelo 3D inventado. Esta demo muestra el **primer escalón del producto real**: con fotos comunes y un esquema de la distribución ya se puede armar una visita navegable. Es el caso «Fotos comunes → plano que abre galerías reales» de la [guía de producción real](../producto/guia-produccion-real.md#2-qué-material-permite-cada-resultado) y de [Por dónde empezar](../producto/por-donde-empezar.md#3-elegí-la-siguiente-acción-según-lo-que-tengas).
 
-Además, es la demo que **ya separa los datos del visor** (`data.js` y `photos.js` por un lado, `app.js` por otro), por lo que es la base más directa para un piloto con una propiedad propia. Ver [cómo adaptarla](#cómo-adaptarla-a-una-propiedad-propia).
+Además, es la demo que **separa los datos del visor**: todo lo que depende de la propiedad está en `data.js` y `photos.js`, y `app.js` no tiene ningún dato de la propiedad escrito en el código. Es la base más directa para un piloto con una propiedad propia. Ver [cómo adaptarla](#cómo-adaptarla-a-una-propiedad-propia).
 
 ## Qué propiedad se muestra
 
@@ -78,10 +78,10 @@ Una foto que no pertenece al ambiente pedido se reemplaza por la primera de ese 
 | [dist/visita-real/index.html](../../dist/visita-real/index.html) | Estructura, textos, diálogos de créditos y de compartir |
 | [dist/visita-real/styles.css](../../dist/visita-real/styles.css) | Estilo y adaptación a celular |
 | [dist/visita-real/app.js](../../dist/visita-real/app.js) | Visor, plano SVG, zoom y desplazamiento, pantalla completa, progreso, compartir y créditos |
-| [dist/visita-real/data.js](../../dist/visita-real/data.js) | Ambientes, rectángulos del plano, puntos de enlace, lectura y escritura de enlaces, límites del desplazamiento |
+| [dist/visita-real/data.js](../../dist/visita-real/data.js) | Datos de la propiedad, ambientes, plano y mobiliario simbólico, puntos de enlace, lectura y escritura de enlaces, límites del desplazamiento |
 | [dist/visita-real/photos.js](../../dist/visita-real/photos.js) | Datos de cada foto: ambiente, título, archivo, autor, fuente, licencia, fecha y cambios |
 | [dist/visita-real/photos/](../../dist/visita-real/photos/) | Las 8 fotos JPG (1280 px de ancho, unos 1,8 MB en total) |
-| [tests/visita-real.test.mjs](../../tests/visita-real.test.mjs) | 4 pruebas: fotos locales válidas con fuente y licencia, recorrido completo y enlaces internos, enlaces compartidos seguros, límites del zoom |
+| [tests/visita-real.test.mjs](../../tests/visita-real.test.mjs) | 6 pruebas: fotos locales con autor, fuente y licencia; recorrido completo y enlaces internos; enlaces compartidos seguros; límites del zoom; plano dentro de su lienzo; visor sin datos fijos de la propiedad |
 
 No usa Three.js: no descarga la librería 3D y funciona aunque el dispositivo no tenga WebGL.
 
@@ -91,12 +91,10 @@ Para un piloto con fotos de una propiedad real, estos son los puntos a cambiar:
 
 1. **Fotos:** guardarlas en `photos/` con nombres estables por ambiente y vista (por ejemplo `living-ventana.jpg`), a unos 1280 px de ancho.
 2. **`photos.js`:** una entrada por foto con `id`, `room`, `label` y `src`. Reemplazar los datos de procedencia por los propios: quién tomó la foto, fecha y autorización de publicación.
-3. **`data.js`:** definir los ambientes (`id`, `name`, `number`, `description`), su rectángulo en el plano (`rect: [x, y, ancho, alto]` en un lienzo de 660 × 490) y la posición del nombre (`point`). Los puntos de enlace van por foto, con `x` e `y` en porcentaje de la imagen.
+3. **`data.js`:** completar `property` (nombre, lugar y la descripción que se usa en el texto alternativo de las fotos); los ambientes (`id`, `name`, `number`, `description`, el rectángulo `rect: [x, y, ancho, alto]` en un lienzo de 660 × 490, la posición del nombre `point` y el mobiliario simbólico `furniture` en SVG), y `plan.backdrop`, el dibujo del contorno y de los espacios sin fotos. Los puntos de enlace van por foto, con `x` e `y` en porcentaje de la imagen.
 4. **Plano:** si hay plano medido, reemplazar el esquema por un SVG del plano real y revisar el aviso «no está a escala».
-5. **Textos fijos que hoy dependen de esta propiedad** (conviene pasarlos a los datos antes del piloto):
-   - `app.js`: el contador `/ 08` y «de 5 espacios»; el texto alternativo de las fotos (menciona Brisbane y al autor); los muebles simbólicos de cada ambiente y los elementos «PASO» y «BALCÓN» del plano.
-   - `index.html`: nombre «Departamento Brisbane», subtítulo, «5 espacios · 8 fotografías», imagen inicial y precarga (`living.jpg`), descripción de la página, créditos del pie y del diálogo.
-6. **Pruebas:** ajustar `tests/visita-real.test.mjs`, que hoy espera 8 fotos de Wikimedia Commons de Chris Olszewski con licencia CC BY-SA 4.0.
+5. **`index.html`:** el nombre de la propiedad, los contadores y las listas ya salen de los datos. En la página quedan los textos de presentación: introducción, sección «Cada ambiente», diálogo de créditos, pie, descripción de la página y la foto inicial con su precarga (`living.jpg`).
+6. **Pruebas:** `tests/visita-real.test.mjs` no depende de esta propiedad. Verifica que cada foto exista y tenga autor, fuente y licencia, que el plano entre en su lienzo y que el visor no tenga datos de la propiedad escritos en el código.
 7. **Antes de publicar:** revisar en las fotos personas, documentos, reflejos y otros datos privados, y confirmar con el responsable de la propiedad el material final ([checklist completa](../producto/por-donde-empezar.md#7-condiciones-para-enviar-el-enlace-a-clientes)).
 
 El siguiente salto de calidad es reemplazar cada foto por **panoramas 360°** para poder mirar alrededor desde cada punto: el plano, los ambientes y los enlaces de esta demo siguen sirviendo.

@@ -22,3 +22,9 @@ main{max-width:1440px;margin:auto;padding:0 55px}.intro{display:flex;align-items
 @media(max-height:500px){.stage:fullscreen .room-card{top:70px}.stage:fullscreen .walk-map{bottom:50px}.stage:fullscreen .walk-map svg{height:80px}.stage:fullscreen .walk-pad{bottom:50px}}
 
 .photo-tour-link{display:flex;align-items:center;gap:15px;padding:13px 17px;border:1px solid #d8ddcf;background:#edf1e5;border-radius:9px;margin-bottom:22px;color:#315442}.photo-tour-link img{width:70px;height:49px;object-fit:cover;border-radius:5px;flex-shrink:0}.photo-tour-link>span{display:flex;flex-direction:column;gap:6px}.photo-tour-link strong{font-size:12px;font-weight:550}.photo-tour-link small{font-size:9px;color:#7c8a70}.photo-tour-link>b{font-size:11px;font-weight:500;margin-left:auto;white-space:nowrap}@media(max-width:760px){.photo-tour-link{padding:11px;gap:10px;margin-bottom:18px}.photo-tour-link img{width:51px;height:47px}.photo-tour-link strong{font-size:10px;line-height:1.5}.photo-tour-link small{font-size:8px;line-height:1.6}.photo-tour-link>b{font-size:9px}.photo-tour-link>span{gap:3px}}
+
+/* El rótulo del visor no queda pegado a la barra de vistas ni a la tarjeta del ambiente. */
+.stage[data-view=interior] .stage-heading{background:#fffefae0;padding:6px 9px;border-radius:5px}
+@media(max-width:1120px){.stage-heading{top:76px}.room-card{top:100px}.stage[data-view=interior] .room-card{top:108px}}
+@media(max-width:760px){.stage-heading{top:78px}.room-card{top:98px}.stage[data-view=interior] .room-card{top:110px}}
+@media(max-height:500px){.stage:fullscreen .room-card,.stage:fullscreen[data-view=interior] .room-card{top:70px}}

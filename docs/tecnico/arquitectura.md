@@ -15,6 +15,7 @@ Cómo está construido el sitio, cómo se prueba y se publica, y qué tener en c
 .
 ├── README.md                    Portada del proyecto
 ├── CHANGELOG.md                 Historial de versiones y verificaciones
+├── LICENSE                      Todos los derechos reservados; excepciones de terceros
 ├── package.json                 Scripts: npm start (servidor local) y npm test
 ├── .github/workflows/pages.yml  Comprobaciones y publicación en GitHub Pages
 ├── scripts/
@@ -24,6 +25,7 @@ Cómo está construido el sitio, cómo se prueba y se publica, y qué tener en c
 └── dist/                        El sitio publicado
     ├── index.html · app.js · construction.js · styles.css    Casa Patio
     ├── walk-navigation.js · movement.js · scene-materials.js Módulos compartidos
+    ├── shared.css               Encabezado y menú comunes a las tres demos
     ├── favicon.svg · .nojekyll
     ├── noveno/                  Noveno: units.js, model.js, city.js, app.js
     ├── visita-real/             Visita real: data.js, photos.js, app.js, photos/
@@ -62,7 +64,8 @@ flowchart LR
 - Casa Patio y Noveno resuelven `import 'three'` con un *import map* declarado en su `index.html`, que apunta a `vendor/three.module.js`.
 - `walk-navigation.js` y `movement.js` son el recorrido a pie y las colisiones de **ambas** demos 3D: un cambio ahí afecta a las dos.
 - Visita real no usa Three.js ni los módulos compartidos.
-- Las tres páginas se enlazan entre sí desde el encabezado o el aviso de novedades.
+- Las tres páginas comparten el encabezado: cargan `shared.css` después de su propio CSS, con el mismo logo, el mismo lema y un menú de demos que marca la actual con `aria-current`.
+- Noveno encuadra la cámara solo: al cambiar de vista proyecta la caja de la maqueta y aleja la cámara si no entra en el visor. Con visores de menos de 600 px las etiquetas de las unidades pasan a modo compacto.
 
 ## Enlaces públicos
 
@@ -91,13 +94,13 @@ Hace falta servir por HTTP: los navegadores no cargan módulos JavaScript abiert
 npm test
 ```
 
-Usa el ejecutor de pruebas integrado en Node.js (versión 20 o posterior), sin instalar nada. Hay **17 pruebas**:
+Usa el ejecutor de pruebas integrado en Node.js (versión 20 o posterior), sin instalar nada. Hay **19 pruebas**:
 
 | Archivo | Pruebas | Qué cubre |
 | --- | --- | --- |
 | [tests/movement.test.mjs](../../tests/movement.test.mjs) | 7 | Colisiones: paso por puertas, paredes en movimientos largos, deslizamiento, distancia a los marcos, muebles, límites y regreso |
 | [tests/noveno.test.mjs](../../tests/noveno.test.mjs) | 6 | Enlaces y valores inválidos, puntos de entrada libres, puertas conectadas, salida al balcón, unidades sin superposición |
-| [tests/visita-real.test.mjs](../../tests/visita-real.test.mjs) | 4 | Fotos locales válidas con fuente y licencia, recorrido completo y puntos de enlace, enlaces compartidos seguros, límites del zoom |
+| [tests/visita-real.test.mjs](../../tests/visita-real.test.mjs) | 6 | Fotos locales con autor, fuente y licencia; recorrido completo y puntos de enlace; enlaces compartidos seguros; límites del zoom; plano dentro de su lienzo; visor sin datos de la propiedad escritos en el código |
 
 Las pruebas cubren la lógica sin navegador. El renderizado y la interacción de Casa Patio y Noveno se verificaron con Chrome y Playwright al cerrar sus versiones; esas verificaciones están registradas en el [CHANGELOG](../../CHANGELOG.md) y no se ejecutan en GitHub Actions.
 
@@ -114,7 +117,7 @@ Requisito único en GitHub: **Settings → Pages → Build and deployment → So
 ## Agregar una demo o propiedad nueva
 
 1. Crear `dist/<nombre>/` con su `index.html`, estilos y módulos. Para una propiedad con fotos, partir de una copia de `visita-real/` ([guía de adaptación](../demos/visita-real.md#cómo-adaptarla-a-una-propiedad-propia)).
-2. Enlazarla desde el encabezado de las otras páginas.
+2. Cargar `shared.css` y sumar su enlace al menú `demo-nav` del encabezado de todas las páginas.
 3. Agregar `tests/<nombre>.test.mjs` para sus datos y enlaces.
 4. En `pages.yml`, sumar su `index.html` a las comprobaciones y su carpeta al bucle de `node --check` (hoy recorre `dist/*.js`, `dist/noveno/*.js` y `dist/visita-real/*.js`).
 5. Sumarla a la tabla de demos del [README](../../README.md), crear su ficha en `docs/demos/` y registrar el cambio en el [CHANGELOG](../../CHANGELOG.md).
@@ -122,12 +125,15 @@ Requisito único en GitHub: **Settings → Pages → Build and deployment → So
 
 ## Estado de calidad
 
-**Verificado:** pruebas automáticas en cada publicación; comprobaciones funcionales con Chrome y Playwright en escritorio y en celular emulado al cerrar las versiones de Casa Patio y Noveno (detalle en el [CHANGELOG](../../CHANGELOG.md)).
+**Verificado:**
+
+- Pruebas automáticas en cada publicación.
+- Revisión visual con Playwright en Chrome y WebKit (el motor de Safari): las 3 demos en 7 tamaños (1440 × 900, 1280 × 720, iPad vertical y horizontal, iPhone 14, Pixel 7 y 360 px), sin errores de JavaScript, recursos rotos, desbordes horizontales ni textos recortados, y 26 interacciones recorridas en laptop y iPhone.
+- Comprobaciones funcionales anteriores de Casa Patio y Noveno (detalle en el [CHANGELOG](../../CHANGELOG.md)).
 
 **Pendiente:**
 
-- Probar en teléfonos físicos, sobre todo Safari de iPhone y un Android de gama media.
+- Probar en teléfonos físicos, sobre todo Safari de iPhone y un Android de gama media. La emulación reproduce tamaños, pantalla táctil y el motor de Safari, pero no el rendimiento real de la GPU ni las particularidades de iOS.
 - Medir la carga con conexiones móviles lentas.
 - Hacer una auditoría completa de accesibilidad.
 - Medir el rendimiento con material real (panoramas o modelos capturados): las demos actuales no permiten estimarlo.
-- Definir una licencia para el código propio del repositorio (ver [créditos y licencias](../creditos-y-licencias.md#código-propio)).

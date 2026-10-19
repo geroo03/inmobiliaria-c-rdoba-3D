@@ -1,0 +1,24 @@
+Copyright (c) 2026 Sebastian Geronimo Peralta. Todos los derechos reservados.
+
+El código, los modelos generados por código, el diseño visual y la documentación
+de este repositorio pertenecen a su titular.
+
+Se permite ver el repositorio y usar las demos publicadas para evaluar el
+proyecto. No se permite copiar, modificar, distribuir, sublicenciar ni usar con
+fines comerciales este material, en todo o en parte, sin autorización previa y
+por escrito del titular.
+
+MATERIAL DE TERCEROS
+
+El repositorio incluye material de terceros que conserva sus propias licencias
+y no está alcanzado por la reserva anterior:
+
+- Three.js 0.164.1 y sus complementos, en dist/vendor/: licencia MIT.
+  Texto completo en dist/vendor/LICENSE-three.txt.
+- Tipografía DM Sans, en dist/vendor/dm-sans.ttf: SIL Open Font License 1.1.
+  Texto completo en dist/vendor/LICENSE-DM-Sans.txt.
+- Fotografías de dist/visita-real/photos/: Chris Olszewski, Wikimedia Commons,
+  licencia CC BY-SA 4.0. Detalle por archivo en docs/creditos-y-licencias.md.
+
+EL MATERIAL SE ENTREGA "TAL CUAL", SIN GARANTÍAS DE NINGÚN TIPO, EXPRESAS O
+IMPLÍCITAS. EL TITULAR NO RESPONDE POR DAÑOS DERIVADOS DE SU USO.

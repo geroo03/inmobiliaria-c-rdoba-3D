@@ -53,7 +53,7 @@ Primer paso concreto: elegir una propiedad, completar su ficha y conseguir el pl
 git clone https://github.com/geroo03/inmobiliaria-c-rdoba-3D.git
 cd inmobiliaria-c-rdoba-3D
 npm start    # sirve el sitio en http://127.0.0.1:4173
-npm test     # 17 pruebas, sin instalar dependencias
+npm test     # 19 pruebas, sin instalar dependencias
 ```
 
 Requisitos: Python 3 para el servidor local, Node.js 20 o posterior para las pruebas y un navegador con WebGL para las demos 3D. En Mac también se puede hacer doble clic en `scripts/ABRIR_PROTOTIPO.command`.
@@ -91,6 +91,8 @@ El [índice de la documentación](docs/README.md) incluye un glosario.
 
 Cada cambio en `dist/`, `tests/` o `package.json` que llega a `main` se comprueba y se publica solo en GitHub Pages mediante [pages.yml](.github/workflows/pages.yml). Solo se publica `dist/`; la documentación se lee desde este repositorio. Detalles en la [documentación técnica](docs/tecnico/arquitectura.md#publicación).
 
-## Créditos
+## Licencia y créditos
 
-Fotos de la Visita real: Chris Olszewski / Wikimedia Commons, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). [Three.js](https://threejs.org/) (MIT) y DM Sans (SIL OFL 1.1). Detalle por archivo en [créditos y licencias](docs/creditos-y-licencias.md).
+Código, diseño y documentación: todos los derechos reservados (ver [LICENSE](LICENSE)).
+
+Material de terceros, con sus propias licencias: fotos de la Visita real de Chris Olszewski / Wikimedia Commons, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/); [Three.js](https://threejs.org/) (MIT) y DM Sans (SIL OFL 1.1). Detalle por archivo en [créditos y licencias](docs/creditos-y-licencias.md).

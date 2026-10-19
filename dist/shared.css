@@ -1,0 +1,10 @@
+/* Encabezado común de las demos: mismo logo, mismo lema y un menú para pasar de una a otra. */
+.header .brand{gap:0;white-space:nowrap}
+.header .brand-mark{display:inline-block;width:.68em;height:.82em;margin-right:.3em;vertical-align:-.1em;flex-shrink:0}
+.header .demo-nav{margin-left:auto;display:flex;align-items:center;gap:2px;min-width:0;padding:3px;border:1px solid #dadccf;border-radius:999px;background:#fffefa;font-size:11px;overflow-x:auto;scrollbar-width:none}
+.header .demo-nav::-webkit-scrollbar{display:none}
+.header .demo-nav a{padding:7px 13px;border-radius:999px;color:#5d6b5c;text-decoration:none;white-space:nowrap;transition:background-color .2s,color .2s}
+.header .demo-nav a:hover{background:#eef1e7;color:#2f4c3c}
+.header .demo-nav a[aria-current=page]{background:#31584b;color:#fff}
+@media(max-width:760px){.header{gap:10px}.header .brand{font-size:30px}.header .demo-nav{gap:0;padding:2px;font-size:10px}.header .demo-nav a{padding:6px 7px}}
+@media(prefers-reduced-motion:reduce){.header .demo-nav a{transition:none}}

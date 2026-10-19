@@ -1,4 +1,4 @@
-import { rooms, photos, hotspots, photosFor, readView, viewURL, nextRoom, clampPan } from './data.js';
+import { property, plan, rooms, photos, hotspots, photosFor, readView, viewURL, nextRoom, clampPan, tourSummary } from './data.js';
 
 const $ = selector => document.querySelector(selector);
 const stage = $('#stage'), plane = $('#photo-plane'), photoImage = $('#photo');
@@ -8,27 +8,15 @@ let fitted = { width: 1, height: 1 }, toastTimer, dragging = false, previousPoin
 const visited = new Set(), pointers = new Map();
 let pinchDistance = 0;
 
-// Mobiliario simbólico. El esquema no representa dimensiones certificadas.
-const furniture = {
-  living: '<rect x="220" y="235" width="125" height="43" rx="9"/><path d="M220 250h125M261 237v40M303 237v40"/><rect x="251" y="290" width="65" height="24" rx="5"/>',
-  comedor: '<rect x="427" y="224" width="90" height="57" rx="4"/><path d="M440 215h20m25 0h20m-65 74h20m25 0h20"/>',
-  cocina: '<path d="M49 205h116v29H79v50H49Z"/><circle cx="103" cy="219" r="8"/><circle cx="129" cy="219" r="8"/><rect x="50" y="376" width="114" height="27"/>',
-  dormitorio: '<rect x="351" y="48" width="129" height="70" rx="3"/><rect x="357" y="52" width="52" height="20" rx="3"/><rect x="422" y="52" width="52" height="20" rx="3"/><path d="M352 79h128"/><rect x="292" y="48" width="23" height="68"/>',
-  bano: '<rect x="48" y="48" width="53" height="57" rx="3"/><path d="M48 48l53 57M48 105l53-57"/><rect x="116" y="48" width="59" height="27" rx="3"/><circle cx="133" cy="61" r="7"/><circle cx="158" cy="61" r="7"/>',
-};
-
 function mapMarkup() {
   return `<svg class="floor-map" viewBox="0 0 660 490" role="group" aria-label="Plano orientativo. Seleccioná un ambiente para ver sus fotos.">
-    <rect x="31" y="31" width="533" height="418" rx="3" fill="#b5bca9"/>
-    <rect x="195" y="35" width="80" height="145" fill="#f4f2e7"/><text class="secondary-label" x="235" y="102">PASO</text>
-    <rect x="575" y="185" width="54" height="260" fill="#e1e7d7" stroke="#b9c4a9" stroke-width="2"/>
-    <text class="secondary-label" transform="translate(605 315) rotate(-90)">BALCÓN · VISIBLE DESDE EL LIVING</text>
+    ${plan.backdrop}
     ${rooms.map(room => `<g class="room-zone" role="button" tabindex="0" data-room="${room.id}" aria-label="Ver ${room.name}">
       <rect class="room-shape" x="${room.rect[0]}" y="${room.rect[1]}" width="${room.rect[2]}" height="${room.rect[3]}"/>
-      <g class="furniture">${furniture[room.id]}</g><text class="map-label" x="${room.point[0]}" y="${room.point[1]}">${room.name}</text>
+      <g class="furniture">${room.furniture}</g><text class="map-label" x="${room.point[0]}" y="${room.point[1]}">${room.name}</text>
       <text class="map-number" x="${room.point[0]}" y="${room.point[1] + 24}">${room.number}</text>
     </g>`).join('')}
-    <circle class="map-dot" r="7" cx="288" cy="371"/>
+    <circle class="map-dot" r="7" cx="${rooms[0].point[0]}" cy="${rooms[0].point[1] + 42}"/>
     <path d="M35 455h525" stroke="#b6bfa9" stroke-width="1"/><text class="secondary-label" x="300" y="478">ESQUEMA DE NAVEGACIÓN · NO ESTÁ A ESCALA</text>
   </svg>`;
 }
@@ -36,6 +24,7 @@ function mapMarkup() {
 $('#room-list').innerHTML = rooms.map(room => `<button class="room-button" data-room="${room.id}" aria-pressed="false"><span class="number">${room.number}</span><span class="name">${room.name}</span><span class="count">${photosFor(room.id).length} ${photosFor(room.id).length === 1 ? 'foto' : 'fotos'}</span></button>`).join('');
 $('#filmstrip').innerHTML = photos.map((photo, index) => `<button class="thumbnail" data-photo="${photo.id}" aria-label="Ver ${photo.label}" aria-pressed="false"><img src="${photo.src}" alt="" loading="lazy" width="91" height="63"><span>${String(index + 1).padStart(2, '0')}</span></button>`).join('');
 $('#mini-map').innerHTML = mapMarkup(); $('#large-map').innerHTML = mapMarkup();
+$('.property h2').textContent = property.name; $('.property div > span').textContent = property.place; $('.tour-format').textContent = tourSummary();
 $('#credits-list').innerHTML = photos.map(photo => `<div class="credit"><img src="${photo.src}" alt="" loading="lazy"><div><strong>${photo.label}</strong><a href="${photo.source}" target="_blank" rel="noopener">Fuente original ↗</a><span>${photo.author} · ${photo.license}</span></div></div>`).join('');
 
 function writeURL(push = true) {
@@ -53,9 +42,9 @@ function renderUI() {
   $('#photo-label').textContent = state.photo.label;
   const roomPhotos = photosFor(state.room.id), roomPhotoIndex = roomPhotos.indexOf(state.photo) + 1;
   $('#photo-caption').textContent = roomPhotos.length > 1 ? `Vista ${roomPhotoIndex} de ${roomPhotos.length} de este ambiente · Fotografía real` : 'Fotografía real · Ampliá para ver detalles';
-  $('#photo-position').textContent = `${String(photos.indexOf(state.photo) + 1).padStart(2, '0')} / 08`;
+  $('#photo-position').textContent = `${String(photos.indexOf(state.photo) + 1).padStart(2, '0')} / ${String(photos.length).padStart(2, '0')}`;
   $('#next-room').innerHTML = `Seguir: ${nextRoom(state.room.id).name} <span aria-hidden="true">→</span>`;
-  $('#progress').textContent = `${visited.size} de 5 espacios`;
+  $('#progress').textContent = `${visited.size} de ${rooms.length} espacios`;
   $('#progress-bar').style.width = `${visited.size / rooms.length * 100}%`;
   document.querySelectorAll('.room-button, .room-zone').forEach(element => {
     const active = element.dataset.room === state.room.id;
@@ -108,7 +97,7 @@ async function showPhoto({ push = true, scroll = false } = {}) {
   try {
     const loaded = new Image(); loaded.src = currentPhoto.src; await loaded.decode();
     if (version !== loadVersion) return;
-    photoImage.src = loaded.src; photoImage.alt = `${currentPhoto.label}. Fotografía real del departamento de Brisbane, de Chris Olszewski.`;
+    photoImage.src = loaded.src; photoImage.alt = `${currentPhoto.label}. ${property.photoDescription}, de ${currentPhoto.author}.`;
     await photoImage.decode();
     if (version !== loadVersion) return;
     fitPhoto(); renderHotspots(); plane.style.visibility = 'visible'; $('#loading').hidden = true;

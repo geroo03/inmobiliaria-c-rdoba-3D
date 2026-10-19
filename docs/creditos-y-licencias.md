@@ -41,4 +41,6 @@ Por eso, al reutilizar la Visita real: mantener los créditos visibles, conserva
 
 ## Código propio
 
-El código, los modelos generados por código y la documentación de este repositorio **no tienen todavía una licencia declarada** (no hay archivo `LICENSE`). Sin licencia, quien acceda al repositorio puede verlo, pero no tiene permiso explícito para reutilizarlo. Si se quiere permitir o restringir ese uso, hay que elegir una licencia y agregarla en la raíz.
+El código, los modelos generados por código, el diseño y la documentación de este repositorio son de **Sebastian Geronimo Peralta, con todos los derechos reservados** ([LICENSE](../LICENSE)). Se puede ver el repositorio y usar las demos para evaluar el proyecto; copiar, modificar o usar comercialmente ese material requiere autorización por escrito. El material de terceros de esta página conserva sus propias licencias.
+
+Si más adelante se quiere abrir el código (por ejemplo, con licencia MIT), alcanza con reemplazar el archivo `LICENSE`. Lo que se haya publicado con una licencia abierta ya no se puede retirar.
