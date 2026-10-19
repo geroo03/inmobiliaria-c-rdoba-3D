@@ -2,6 +2,20 @@
 
 Cambios de cada versión, de la más reciente a la más antigua, con las verificaciones hechas al cerrarla. Cada versión corresponde a un commit de `main`.
 
+## Herramientas para presentar: QR, WhatsApp y vista previa · 19/10/2026
+
+### Agregado
+- Botón «Abrir en el celular» en el encabezado de las tres demos: muestra el QR de la vista actual, incluida la unidad o la foto elegida. Aparece en pantallas de más de 760 px (`dist/qr-share.js`, con el generador MIT `dist/vendor/qrcode.js`).
+- «Consultar por WhatsApp» en la ficha de cada unidad de Noveno y en la Visita real, con el mensaje armado y el enlace a la vista. El número se configura en `dist/contact.js`.
+- Vista previa al compartir (Open Graph) en las tres páginas, con imágenes de 1200 × 630 en `dist/og/`.
+- Guía de qué fotos pedir para cargar una propiedad nueva en la Visita real.
+- 6 pruebas nuevas (25 en total): enlace de WhatsApp y metadatos comunes de las páginas.
+
+### Verificado
+- 25 pruebas automatizadas con `npm test`.
+- El QR, leído con el decodificador de códigos de Chrome, devuelve la dirección exacta de la vista en las tres demos. Los mensajes de WhatsApp cambian con la unidad o el ambiente, y con el diálogo abierto Escape no saca de la caminata.
+- Revisión visual en Chrome y WebKit en 7 tamaños, sin errores, desbordes ni textos recortados. En celular el botón del QR no aparece; en tablet se muestra solo el ícono.
+
 ## Correcciones visuales, encabezado común y licencia · 18/10/2026
 
 ### Corregido

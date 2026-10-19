@@ -36,6 +36,10 @@ jobs:
           test -s dist/index.html
           test -s dist/styles.css
           test -s dist/shared.css
+          test -s dist/contact.js
+          test -s dist/qr-share.js
+          test -s dist/vendor/qrcode.js
+          for image in casa-patio noveno visita-real; do test -s "dist/og/$image.jpg"; done
           test -s dist/vendor/three.module.js
           test -s dist/vendor/OrbitControls.js
           test -s dist/vendor/RoundedBoxGeometry.js

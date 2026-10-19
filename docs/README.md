@@ -48,4 +48,5 @@
 | **Maqueta (*dollhouse*)** | Vista 3D de toda la vivienda sin techo, desde arriba. |
 | **Punto de enlace** | Marca sobre una foto o panorama que lleva a otro ambiente. |
 | **Recorrido a pie** | Movimiento libre dentro de un modelo 3D, con colisiones contra paredes y muebles (Casa Patio y Noveno). |
+| **Vista previa al compartir** | Imagen, título y descripción que muestran WhatsApp y las redes al pegar un enlace (etiquetas Open Graph). |
 | **Enlace público** | Dirección que cualquiera puede abrir. No es un acceso privado aunque sea difícil de adivinar. |

@@ -46,6 +46,7 @@ Los «enlaces dentro de la foto» son puntos sobre la imagen que llevan a otro a
 - **Progreso:** cuenta los ambientes visitados («3 de 5 espacios»).
 - **Compartir:** copia un enlace que abre el mismo ambiente y la misma foto; si el navegador no deja copiar, muestra el enlace para copiarlo a mano.
 - **Créditos:** cada foto tiene autor, fuente y licencia a un clic.
+- **Consultar por WhatsApp:** debajo del botón **Seguir**, abre WhatsApp con un mensaje que nombra la propiedad, la foto que se estaba viendo y el enlace a esa vista. El número se configura en `dist/contact.js` ([cómo](../tecnico/arquitectura.md#configurar-el-contacto-por-whatsapp)).
 - **Fallos de carga:** si una foto no carga, aparece un aviso con **Reintentar** y se puede seguir usando el resto.
 - **Accesibilidad:** los ambientes del plano se activan con teclado (Enter o espacio), los cambios de foto se anuncian a lectores de pantalla y se respeta la preferencia de movimiento reducido. Sin JavaScript, la página ofrece abrir la foto del living.
 
@@ -86,6 +87,19 @@ Una foto que no pertenece al ambiente pedido se reemplaza por la primera de ese 
 No usa Three.js: no descarga la librería 3D y funciona aunque el dispositivo no tenga WebGL.
 
 ## Cómo adaptarla a una propiedad propia
+
+### Qué fotos pedir
+
+- **De 1 a 3 fotos por ambiente**, horizontales, desde la puerta o una esquina para que se entienda el espacio completo.
+- Luz natural, ambientes ordenados, sin personas ni documentos o datos personales a la vista.
+- Un nombre de archivo por ambiente y vista (`living-1.jpg`, `cocina.jpg`, `dormitorio-ventana.jpg`).
+- Un plano o un croquis a mano con la ubicación de los ambientes y del balcón.
+- Nombre comercial, barrio, superficie y, si se quiere mostrar, el precio.
+- Autorización del propietario para publicar las fotos.
+
+Con ese material, preparar la visita lleva poco: solo se cambian `data.js`, `photos.js`, las fotos y los textos de presentación de la página.
+
+### Pasos
 
 Para un piloto con fotos de una propiedad real, estos son los puntos a cambiar:
 

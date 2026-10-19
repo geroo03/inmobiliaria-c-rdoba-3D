@@ -47,13 +47,19 @@ Las demos marcan tres niveles posibles para mostrar un inmueble existente:
 
 Primer paso concreto: elegir una propiedad, completar su ficha y conseguir el plano. Está todo en **[Por dónde empezar](docs/producto/por-donde-empezar.md)**.
 
+## Para presentar y compartir
+
+- **Abrir en el celular:** en una laptop o un proyector, el botón del encabezado muestra un QR de la vista actual para que el público la abra en su teléfono.
+- **Vista previa en WhatsApp:** al pegar el enlace de cualquier demo aparece una imagen con su título y descripción.
+- **Consultar por WhatsApp:** cada unidad de Noveno y la Visita real tienen un botón con el mensaje ya escrito. El número de la inmobiliaria se configura en `dist/contact.js` ([cómo](docs/tecnico/arquitectura.md#configurar-el-contacto-por-whatsapp)).
+
 ## Inicio rápido
 
 ```sh
 git clone https://github.com/geroo03/inmobiliaria-c-rdoba-3D.git
 cd inmobiliaria-c-rdoba-3D
 npm start    # sirve el sitio en http://127.0.0.1:4173
-npm test     # 19 pruebas, sin instalar dependencias
+npm test     # 25 pruebas, sin instalar dependencias
 ```
 
 Requisitos: Python 3 para el servidor local, Node.js 20 o posterior para las pruebas y un navegador con WebGL para las demos 3D. En Mac también se puede hacer doble clic en `scripts/ABRIR_PROTOTIPO.command`.
@@ -67,6 +73,7 @@ dist/                Sitio publicado
 ├── index.html …     Casa Patio y módulos 3D compartidos
 ├── noveno/          Noveno
 ├── visita-real/     Visita real (datos, visor y fotos)
+├── og/              Imágenes de vista previa para compartir
 └── vendor/          Three.js y DM Sans, con sus licencias
 docs/                Documentación (índice en docs/README.md)
 tests/               Pruebas con node:test

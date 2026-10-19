@@ -1,4 +1,5 @@
 import { property, plan, rooms, photos, hotspots, photosFor, readView, viewURL, nextRoom, clampPan, tourSummary } from './data.js';
+import { whatsappLink } from '../contact.js';
 
 const $ = selector => document.querySelector(selector);
 const stage = $('#stage'), plane = $('#photo-plane'), photoImage = $('#photo');
@@ -44,6 +45,7 @@ function renderUI() {
   $('#photo-caption').textContent = roomPhotos.length > 1 ? `Vista ${roomPhotoIndex} de ${roomPhotos.length} de este ambiente · Fotografía real` : 'Fotografía real · Ampliá para ver detalles';
   $('#photo-position').textContent = `${String(photos.indexOf(state.photo) + 1).padStart(2, '0')} / ${String(photos.length).padStart(2, '0')}`;
   $('#next-room').innerHTML = `Seguir: ${nextRoom(state.room.id).name} <span aria-hidden="true">→</span>`;
+  $('#whatsapp').href = whatsappLink(`Hola, vi la visita de «${property.name}» y quiero hacer una consulta. Estaba viendo: ${state.photo.label}. ${viewURL(location.href, state.room, state.photo, 'fotos').href}`);
   $('#progress').textContent = `${visited.size} de ${rooms.length} espacios`;
   $('#progress-bar').style.width = `${visited.size / rooms.length * 100}%`;
   document.querySelectorAll('.room-button, .room-zone').forEach(element => {

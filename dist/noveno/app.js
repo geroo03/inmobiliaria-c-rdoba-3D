@@ -5,6 +5,7 @@ import { createWalkNavigation } from '../walk-navigation.js';
 import { units, readView } from './units.js';
 import { createApartment, createBuilding } from './model.js';
 import { createCity } from './city.js';
+import { whatsappLink } from '../contact.js';
 
 const $=id=>document.getElementById(id),stage=$('stage'),canvas=$('scene');
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -59,6 +60,7 @@ function updateUnit(){
   $('unit-label').textContent=`UNIDAD ${unit.label}`;$('unit-name').textContent=unit.name;$('unit-description').textContent=unit.description;
   $('total-area').innerHTML=`${format(unit.covered+unit.balcony)} <small>m²</small>`;$('bedrooms').textContent=String(unit.bedrooms).padStart(2,'0');$('balcony-area').innerHTML=`${format(unit.balcony)} <small>m²</small>`;
   $('enter-unit').innerHTML=`Entrar al departamento ${unit.label} <span>↗</span>`;
+  $('unit-whatsapp').href=whatsappLink(`Hola, quiero consultar por la unidad ${unit.label} del proyecto Noveno: ${unit.bedrooms} ${unit.bedrooms===1?'dormitorio':'dormitorios'}, ${format(unit.covered+unit.balcony)} m². ${new URL(`?unidad=${unit.id}&vista=unidad`,location.href).href}`);$('unit-whatsapp').setAttribute('aria-label',`Consultar por WhatsApp por la unidad ${unit.label}`);
   $('rooms').replaceChildren();$('map-rooms').replaceChildren();
   $('mini-map').setAttribute('viewBox',`${-unit.width/2-.25} -7.3 ${unit.width+.5} 14.2`);
   for(const room of unit.rooms){

@@ -17,7 +17,7 @@ Las ocho fotos son de **Chris Olszewski** ([Kgbo en Wikimedia Commons](https://c
 | `bano-lavabos.jpg` | Baño · lavabos | [Bathroom, Interior of apartment in Brisbane, 2025, 07.jpg](https://commons.wikimedia.org/wiki/File:Bathroom,_Interior_of_apartment_in_Brisbane,_2025,_07.jpg) |
 | `bano-ducha.jpg` | Baño · ducha | [Shower, Interior of apartment in Brisbane, 2025, 06.jpg](https://commons.wikimedia.org/wiki/File:Shower,_Interior_of_apartment_in_Brisbane,_2025,_06.jpg) |
 
-**Cambios:** se usan las versiones de 1280 px de ancho que genera Wikimedia, sin retoques de contenido. El visor permite ampliar y encuadrar, pero la foto completa siempre está disponible. La captura de pantalla de [docs/img/visita-real.jpg](img/visita-real.jpg) muestra la foto del living dentro de la interfaz.
+**Cambios:** se usan las versiones de 1280 px de ancho que genera Wikimedia, sin retoques de contenido. El visor permite ampliar y encuadrar, pero la foto completa siempre está disponible. La captura de pantalla de [docs/img/visita-real.jpg](img/visita-real.jpg) muestra la foto del living dentro de la interfaz. La imagen de vista previa [dist/og/visita-real.jpg](../dist/og/visita-real.jpg) usa la misma foto, recortada a 1200 × 630 con el título encima, y lleva impreso el crédito.
 
 **Dónde se acredita en el sitio:** pie de página, botón **ⓘ Créditos** del visor y diálogo «Ver fuentes y licencia de las imágenes», con autor, fuente y licencia por foto. Los mismos datos están en [dist/visita-real/photos.js](../dist/visita-real/photos.js), que es la fuente de verdad.
 
@@ -38,6 +38,10 @@ Por eso, al reutilizar la Visita real: mantener los créditos visibles, conserva
 ## Librería 3D
 
 **Three.js 0.164.1** — Copyright © 2010-2024 three.js authors. Licencia MIT. Incluye el núcleo (`three.module.js`) y los complementos `OrbitControls.js`, `RoundedBoxGeometry.js` y `RoomEnvironment.js`. Licencia completa en [dist/vendor/LICENSE-three.txt](../dist/vendor/LICENSE-three.txt).
+
+## Generador de códigos QR
+
+**QR Code Generator for JavaScript 1.4.4** — Copyright (c) 2009 Kazuhiko Arase. Licencia MIT. Genera el código del botón «Abrir en el celular». Archivo: `dist/vendor/qrcode.js`; licencia completa en [dist/vendor/LICENSE-qrcode.txt](../dist/vendor/LICENSE-qrcode.txt). «QR Code» es una marca registrada de DENSO WAVE INCORPORATED.
 
 ## Código propio
 

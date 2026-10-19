@@ -5,6 +5,12 @@
   <meta name="theme-color" content="#f5f3ed"><meta name="description" content="Tres departamentos de ejemplo en un noveno piso. Compará unidades, explorá el plano y recorré sus ambientes y balcones en 3D.">
   <title>Noveno · Tres formas de vivir la ciudad — Habita</title>
   <link rel="icon" href="../favicon.svg"><link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="../shared.css">
+  <meta property="og:type" content="website"><meta property="og:locale" content="es_AR"><meta property="og:site_name" content="Habita">
+  <meta property="og:title" content="Noveno · Tres departamentos en un piso 9"><meta property="og:description" content="Recorré en 3D un edificio de ejemplo: compará tres unidades, entrá a cada departamento y salí al balcón a 27 m de altura. Sin instalar nada.">
+  <meta property="og:url" content="https://geroo03.github.io/inmobiliaria-c-rdoba-3D/noveno/"><meta property="og:image" content="https://geroo03.github.io/inmobiliaria-c-rdoba-3D/og/noveno.jpg">
+  <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Maqueta 3D del piso 9 con los departamentos 9A, 9B y 9C">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="../vendor/qrcode.js" defer></script><script type="module" src="../qr-share.js"></script>
   <script type="importmap">{"imports":{"three":"../vendor/three.module.js"}}</script>
 </head>
 <body>
@@ -42,7 +48,7 @@
             <div class="unit-card" style="--unit-color:#bfa387"><span class="unit-letter">9B</span><span class="unit-card-info"><strong>2 dormitorios</strong><span>108,8 m² · Piso 9</span><span class="status">Disponible · demo</span></span></div>
             <div class="unit-card" style="--unit-color:#8b9eaa"><span class="unit-letter">9C</span><span class="unit-card-info"><strong>3 dormitorios</strong><span>136 m² · Piso 9</span><span class="status">Disponible · demo</span></span></div>
           </div>
-          <div class="unit-detail"><div class="detail-kicker"><span id="unit-label">UNIDAD 9B</span><span>BALCÓN AL FRENTE</span></div><h3 id="unit-name">Espacio para compartir</h3><p id="unit-description"></p><dl class="metrics"><div><dt>Totales aprox.</dt><dd id="total-area"></dd></div><div><dt>Dormitorios</dt><dd id="bedrooms"></dd></div><div><dt>Balcón</dt><dd id="balcony-area"></dd></div></dl><button id="enter-unit" class="primary">Entrar al departamento <span>↗</span></button><p class="price-note">Valor a consultar · Disponibilidad ilustrativa</p></div>
+          <div class="unit-detail"><div class="detail-kicker"><span id="unit-label">UNIDAD 9B</span><span>BALCÓN AL FRENTE</span></div><h3 id="unit-name">Espacio para compartir</h3><p id="unit-description"></p><dl class="metrics"><div><dt>Totales aprox.</dt><dd id="total-area"></dd></div><div><dt>Dormitorios</dt><dd id="bedrooms"></dd></div><div><dt>Balcón</dt><dd id="balcony-area"></dd></div></dl><button id="enter-unit" class="primary">Entrar al departamento <span>↗</span></button><a id="unit-whatsapp" class="whatsapp-button" href="https://wa.me/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.4 12.7L3.5 20.5l4.4-1.1A8.5 8.5 0 1 0 12 3.5z"/></svg>Consultar por WhatsApp</a><p class="price-note">Valor a consultar · Disponibilidad ilustrativa</p></div>
           <div class="rooms-section"><p class="eyebrow">IR DIRECTO A UN AMBIENTE</p><div id="rooms" class="room-list"></div></div>
         </aside>
       </div>

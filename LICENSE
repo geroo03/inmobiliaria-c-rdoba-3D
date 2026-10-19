@@ -17,6 +17,8 @@ y no está alcanzado por la reserva anterior:
   Texto completo en dist/vendor/LICENSE-three.txt.
 - Tipografía DM Sans, en dist/vendor/dm-sans.ttf: SIL Open Font License 1.1.
   Texto completo en dist/vendor/LICENSE-DM-Sans.txt.
+- QR Code Generator for JavaScript 1.4.4 (Kazuhiko Arase), en dist/vendor/qrcode.js:
+  licencia MIT. Texto completo en dist/vendor/LICENSE-qrcode.txt.
 - Fotografías de dist/visita-real/photos/: Chris Olszewski, Wikimedia Commons,
   licencia CC BY-SA 4.0. Detalle por archivo en docs/creditos-y-licencias.md.
 

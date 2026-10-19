@@ -32,6 +32,7 @@ Son 18 ambientes en total. Las superficies salen de las dimensiones generales de
 - **Balcón transitable:** se sale desde el living; las barandas limitan el paso y se ve el entorno debajo.
 - **Iluminación:** día o atardecer, con texturas, reflejos y luces interiores.
 - **Compartir:** cada unidad y cada vista tienen un enlace propio (ver más abajo).
+- **Consultar por WhatsApp:** la ficha de cada unidad tiene un botón que abre WhatsApp con un mensaje con la unidad, los dormitorios, la superficie y el enlace a esa unidad. El número se configura en `dist/contact.js` ([cómo](../tecnico/arquitectura.md#configurar-el-contacto-por-whatsapp)).
 - **Encuadre automático:** la cámara se aleja lo necesario para que el edificio, el piso o la unidad entren completos en cualquier pantalla. En visores angostos, las etiquetas 9A, 9B y 9C se muestran compactas para no pisarse.
 
 ### Controles
