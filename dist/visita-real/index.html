@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ed">
+  <meta name="description" content="Visitá un departamento con ocho fotografías reales: elegí un espacio en el plano orientativo y recorré living, comedor, cocina, dormitorio y baño.">
+  <title>Un hogar real, ambiente por ambiente — Habita</title>
+  <link rel="icon" href="../favicon.svg"><link rel="stylesheet" href="./styles.css">
+  <link rel="preload" as="image" href="./photos/living.jpg">
+</head>
+<body>
+  <header class="header"><a href="../" class="brand" aria-label="Habita, inicio">⌂ habita<span>.</span></a><span class="tagline">ESPACIOS PARA VIVIR</span><nav aria-label="Otras experiencias"><a href="../">Casa Patio</a><a href="../noveno/">Noveno 3D ↗</a></nav></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">AHORA, CON FOTOGRAFÍAS REALES</p><h1>Un hogar. <em>Tal como es.</em></h1></div><p>Elegí un espacio en el plano.<br>Entrá a sus fotos y conocé cada detalle.</p></section>
+    <section class="experience" aria-label="Visita fotográfica del departamento">
+      <div class="experience-bar"><div class="property"><span class="property-icon" aria-hidden="true">⌂</span><div><h2>Departamento Brisbane</h2><span>Australia · Serie fotográfica de junio de 2025</span></div></div><span class="photo-badge"><i></i> Fotos reales</span><button id="share" class="outline">↗ Compartir visita</button></div>
+      <div class="explorer">
+        <div class="viewer">
+          <div class="toolbar"><div class="mode-tabs" role="group" aria-label="Tipo de vista"><button data-mode="fotos" aria-pressed="true" class="active">◉ <span>Recorrido en fotos</span></button><button data-mode="plano" aria-pressed="false">⊞ <span>Ver desde arriba</span></button></div><span class="tour-format">5 espacios · 8 fotografías</span></div>
+          <div id="stage" class="stage" tabindex="0" aria-label="Visor de fotografías. Flechas izquierda y derecha cambian de foto. Más y menos amplían. Escape restablece la vista.">
+            <div id="photo-surface" class="photo-surface">
+              <div id="photo-plane" class="photo-plane"><img id="photo" src="./photos/living.jpg" alt="Living del departamento de Brisbane, con sofá, cocina integrada y ventanal al balcón." draggable="false" width="1280" height="959"><div id="hotspots"></div></div>
+              <div class="photo-shade" aria-hidden="true"></div>
+              <div class="photo-heading"><span>ESTÁS VIENDO</span><h3 id="room-title">Living</h3></div>
+              <div class="photo-tools" role="group" aria-label="Controles de fotografía"><button id="zoom-out" aria-label="Alejar fotografía">−</button><button id="zoom-in" aria-label="Acercar fotografía">+</button><button id="reset" aria-label="Ver fotografía completa">↺</button><button id="fullscreen" aria-label="Abrir pantalla completa">⛶</button></div>
+              <div class="photo-bottom"><span id="photo-position">01 / 08</span><span id="gesture-hint">Tocá los puntos para cambiar de espacio</span><button id="credits" aria-label="Ver autor, fuente y licencia de las fotos">ⓘ Créditos</button></div>
+              <div id="loading" class="loading" role="status" hidden><span></span>Cargando fotografía…</div>
+              <div id="photo-error" class="error" role="alert" hidden><strong>No se pudo cargar esta foto.</strong><p>Podés elegir otro ambiente o volver a intentar.</p><button id="retry">Reintentar</button></div>
+            </div>
+            <div id="plan-surface" class="plan-surface" hidden><div class="plan-title"><p class="eyebrow">UNA MIRADA AL CONJUNTO</p><h3>Elegí dónde empezar.</h3><p>Tocá un ambiente para abrir su fotografía.</p></div><div id="large-map" class="large-map"></div><p class="plan-disclaimer">Distribución orientativa · Sin medidas verificadas</p></div>
+          </div>
+          <div class="photo-nav"><button id="previous-photo" aria-label="Fotografía anterior">←</button><div><strong id="photo-label">Living y balcón</strong><span id="photo-caption">Fotografía real · Ampliá para ver detalles</span></div><button id="next-photo" aria-label="Fotografía siguiente">→</button></div>
+          <div id="filmstrip" class="filmstrip" aria-label="Todas las fotografías"></div>
+        </div>
+        <aside class="sidebar">
+          <div class="sidebar-title"><h3>Tu recorrido</h3><span id="progress">1 de 5 espacios</span></div>
+          <div class="progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
+          <div id="room-list" class="room-list"></div>
+          <div class="map-card"><div><h3>Ubicate en el plano</h3><button id="expand-map" aria-label="Ampliar plano">↗</button></div><div id="mini-map"></div><p>Esquema orientativo. Tocá para ir a las fotos.</p></div>
+          <div class="room-detail"><span class="eyebrow" id="room-number">AMBIENTE 01</span><h3 id="detail-name">Living</h3><p id="room-description"></p><button id="next-room" class="primary">Seguir al comedor <span>→</span></button></div>
+        </aside>
+      </div>
+      <div class="experience-note"><span class="note-dot"></span><p>Visita de demostración con fotos reales. El plano y los enlaces entre ambientes son orientativos. Esta propiedad no se ofrece en venta.</p></div>
+    </section>
+    <section class="about"><div><p class="eyebrow">DE UNA FOTO A UNA VISITA</p><h2>Cada ambiente,<br><em>con su propia historia.</em></h2></div><div><p>Estas ocho imágenes pertenecen a la serie <em>Interior of apartment in Brisbane, 2025</em>, de Chris Olszewski. Podés pasar de un ambiente a otro, ampliar las fotos y compartir la vista que elegiste.</p><p>Es un recorrido fotográfico por puntos. Para mirar en todas las direcciones y recorrer con precisión tu propiedad, el siguiente paso es sumar fotos 360° y un plano medido.</p><button id="all-credits" class="text-link">Ver fuentes y licencia de las imágenes ↗</button></div></section>
+  </main>
+  <footer><a href="../" class="brand">habita<span>.</span></a><span>Fotos: Chris Olszewski / Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></span><a href="../noveno/">Explorar Noveno en 3D ↗</a></footer>
+  <dialog id="credits-dialog" aria-labelledby="credits-title"><div class="dialog-head"><div><p class="eyebrow">FOTOGRAFÍA Y PROCEDENCIA</p><h2 id="credits-title">Un recorrido con fuentes.</h2></div><button data-close aria-label="Cerrar créditos">×</button></div><p>Fotografías de <a href="https://commons.wikimedia.org/wiki/User:Kgbo" target="_blank" rel="noopener">Chris Olszewski (Kgbo)</a>, publicadas en Wikimedia Commons bajo <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>. Tomadas el 29 de junio de 2025. Versiones de 1280 px de ancho, sin retoque de contenido; el visor permite ampliarlas y cambiar el encuadre.</p><p>La serie muestra un departamento en Brisbane. No contamos con su plano medido, su piso ni su disponibilidad comercial. El esquema organiza las fotografías y no certifica la distribución real. El autor no patrocina esta demo.</p><div id="credits-list" class="credits-list"></div></dialog>
+  <dialog id="share-dialog" aria-labelledby="share-title"><div class="dialog-head"><h2 id="share-title">Compartir esta vista</h2><button data-close aria-label="Cerrar enlace">×</button></div><p>Copiá el enlace público. Abre el mismo ambiente y fotografía.</p><label for="share-url">Enlace de la visita</label><input id="share-url" readonly><button id="copy-again" class="primary">Copiar enlace</button></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div><span id="announcement" class="sr-only" role="status" aria-live="polite"></span>
+  <noscript><p class="no-script">Activá JavaScript para usar el plano y el recorrido. También podés <a href="./photos/living.jpg">abrir la foto del living</a>.</p></noscript>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

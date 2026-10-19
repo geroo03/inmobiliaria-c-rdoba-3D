@@ -64,19 +64,19 @@ La aplicación no requiere una base de datos, un servidor de negocio ni claves d
 
 | Archivo | Para qué sirve |
 | --- | --- |
-| [README.md](README.md) | Instrucciones de uso y ejecución local |
-| [dist/index.html](dist/index.html) | Estructura, textos y controles de la interfaz |
-| [dist/styles.css](dist/styles.css) | Estilo visual y adaptación a pantallas pequeñas |
-| [dist/app.js](dist/app.js) | Modelo, cámaras, selección, iluminación y animación |
-| [dist/construction.js](dist/construction.js) | Secuencia constructiva y piezas temporales de obra |
-| [dist/walk-navigation.js](dist/walk-navigation.js) | Recorrido con teclado, ratón y controles táctiles |
-| [dist/movement.js](dist/movement.js) | Colisiones y deslizamiento junto a obstáculos |
-| [dist/scene-materials.js](dist/scene-materials.js) | Materiales y texturas locales |
-| [tests/movement.test.mjs](tests/movement.test.mjs) | Pruebas automatizadas de colisión |
-| [dist/favicon.svg](dist/favicon.svg) | Icono de Habita |
+| [README.md](../README.md) | Instrucciones de uso y ejecución local |
+| [dist/index.html](../dist/index.html) | Estructura, textos y controles de la interfaz |
+| [dist/styles.css](../dist/styles.css) | Estilo visual y adaptación a pantallas pequeñas |
+| [dist/app.js](../dist/app.js) | Modelo, cámaras, selección, iluminación y animación |
+| [dist/construction.js](../dist/construction.js) | Secuencia constructiva y piezas temporales de obra |
+| [dist/walk-navigation.js](../dist/walk-navigation.js) | Recorrido con teclado, ratón y controles táctiles |
+| [dist/movement.js](../dist/movement.js) | Colisiones y deslizamiento junto a obstáculos |
+| [dist/scene-materials.js](../dist/scene-materials.js) | Materiales y texturas locales |
+| [tests/movement.test.mjs](../tests/movement.test.mjs) | Pruebas automatizadas de colisión |
+| [dist/favicon.svg](../dist/favicon.svg) | Icono de Habita |
 | `dist/vendor/` | Librería 3D, controles, tipografía y licencias |
-| [ABRIR_PROTOTIPO.command](ABRIR_PROTOTIPO.command) | Lanzador local para Mac |
-| [.github/workflows/pages.yml](.github/workflows/pages.yml) | Verificación de archivos y publicación de `dist/` en GitHub Pages |
+| [ABRIR_PROTOTIPO.command](../scripts/ABRIR_PROTOTIPO.command) | Lanzador local para Mac |
+| [.github/workflows/pages.yml](../.github/workflows/pages.yml) | Verificación de archivos y publicación de `dist/` en GitHub Pages |
 | [Descargar el repositorio](https://github.com/geroo03/inmobiliaria-c-rdoba-3D/archive/refs/heads/main.zip) | Copia descargable de la aplicación y su documentación |
 
 Esta copia reúne la aplicación y los documentos de producción. El despliegue de GitHub Pages publica únicamente el contenido de `dist/`; la documentación permanece disponible en el repositorio.

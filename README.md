@@ -2,7 +2,7 @@
 
 **[Noveno: tres departamentos en un piso 9](https://geroo03.github.io/inmobiliaria-c-rdoba-3D/noveno/)** · **[Casa Patio: construcción y recorrido](https://geroo03.github.io/inmobiliaria-c-rdoba-3D/)**
 
-**Noveno** presenta un edificio ilustrativo con tres unidades: 9A (un dormitorio), 9B (dos) y 9C (tres). Permite ver el edificio, comparar el piso completo, abrir cada departamento, recorrer sus ambientes y salir al balcón con una ciudad recreada debajo. Cada unidad y modo de vista tienen un enlace público para compartir. [Ver alcance y detalles](DEMO_NOVENO_PISO.md).
+**Noveno** presenta un edificio ilustrativo con tres unidades: 9A (un dormitorio), 9B (dos) y 9C (tres). Permite ver el edificio, comparar el piso completo, abrir cada departamento, recorrer sus ambientes y salir al balcón con una ciudad recreada debajo. Cada unidad y modo de vista tienen un enlace público para compartir. [Ver alcance y detalles](docs/DEMO_NOVENO_PISO.md).
 
 Ambas demos usan modelos creados por código. Para representar una propiedad existente hay que incorporar sus planos, capturas o fotografías; estas experiencias no son levantamientos de inmuebles reales.
 
@@ -27,11 +27,11 @@ La abertura de la galería permite caminar al patio. Para moverse con el teclado
 
 ## Documentación
 
-- [Por dónde empezar](POR_DONDE_EMPEZAR.md): pasos y ficha para elegir y preparar la primera propiedad real.
-- [Guía de producción real](GUIA_PRODUCCION_REAL.md): fotos comunes, panoramas 360°, captura espacial, alternativas y arquitectura propuesta.
-- [Informe del prototipo](INFORME_DEL_PROTOTIPO.md): qué se construyó, cómo funciona, archivos entregados y verificaciones realizadas.
-- [Mejoras de construcción y recorrido](MEJORAS_CONSTRUCCION_Y_RECORRIDO.md): cambios de esta versión, controles y alcance del realismo.
-- [Demo del noveno piso](DEMO_NOVENO_PISO.md): tres unidades, vistas desde altura, enlaces y preparación de una propiedad real.
+- [Por dónde empezar](docs/POR_DONDE_EMPEZAR.md): pasos y ficha para elegir y preparar la primera propiedad real.
+- [Guía de producción real](docs/GUIA_PRODUCCION_REAL.md): fotos comunes, panoramas 360°, captura espacial, alternativas y arquitectura propuesta.
+- [Informe del prototipo](docs/INFORME_DEL_PROTOTIPO.md): qué se construyó, cómo funciona, archivos entregados y verificaciones realizadas.
+- [Mejoras de construcción y recorrido](docs/MEJORAS_CONSTRUCCION_Y_RECORRIDO.md): cambios de esta versión, controles y alcance del realismo.
+- [Demo del noveno piso](docs/DEMO_NOVENO_PISO.md): tres unidades, vistas desde altura, enlaces y preparación de una propiedad real.
 
 ## Publicación en GitHub Pages
 
@@ -51,7 +51,7 @@ Desde esta carpeta:
 python3 -m http.server 4173 --bind 127.0.0.1 --directory dist
 ```
 
-Abrir **http://127.0.0.1:4173** en Chrome, Edge o Safari con WebGL habilitado. En Mac también se puede ejecutar `ABRIR_PROTOTIPO.command` con doble clic.
+Abrir **http://127.0.0.1:4173** en Chrome, Edge o Safari con WebGL habilitado. En Mac también se puede ejecutar `scripts/ABRIR_PROTOTIPO.command` con doble clic.
 
 El prototipo se sirve por HTTP porque usa módulos JavaScript. Todas las dependencias, incluida la tipografía, están en `dist/vendor`: no necesita claves, una cuenta ni descargas de recursos externos al navegar.
 
