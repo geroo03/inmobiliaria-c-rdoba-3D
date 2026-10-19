@@ -1,4 +1,4 @@
-// Fotografías reales: atribución por archivo. Ver también CREDITOS_FOTOGRAFIAS.md.
+// Fotografías reales: atribución por archivo. Ver también docs/creditos-y-licencias.md.
 export const photos = [
   {
     "id": "living",

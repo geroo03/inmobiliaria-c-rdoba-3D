@@ -1,71 +1,96 @@
-# Habita · Prototipo inmobiliario
+# Habita · Prototipo inmobiliario 3D
 
-**[Noveno: tres departamentos en un piso 9](https://geroo03.github.io/inmobiliaria-c-rdoba-3D/noveno/)** · **[Casa Patio: construcción y recorrido](https://geroo03.github.io/inmobiliaria-c-rdoba-3D/)**
+[![Publicar en GitHub Pages](https://github.com/geroo03/inmobiliaria-c-rdoba-3D/actions/workflows/pages.yml/badge.svg)](https://github.com/geroo03/inmobiliaria-c-rdoba-3D/actions/workflows/pages.yml)
 
-**Noveno** presenta un edificio ilustrativo con tres unidades: 9A (un dormitorio), 9B (dos) y 9C (tres). Permite ver el edificio, comparar el piso completo, abrir cada departamento, recorrer sus ambientes y salir al balcón con una ciudad recreada debajo. Cada unidad y modo de vista tienen un enlace público para compartir. [Ver alcance y detalles](docs/DEMO_NOVENO_PISO.md).
+Tres maneras de mostrar una propiedad en el navegador, sin instalar nada y desde PC o celular: **ver cómo se construye** una casa, **recorrer departamentos en 3D** y **visitar un departamento real** a partir de sus fotos.
 
-Ambas demos usan modelos creados por código. Para representar una propiedad existente hay que incorporar sus planos, capturas o fotografías; estas experiencias no son levantamientos de inmuebles reales.
+**[Abrir las demos →](https://geroo03.github.io/inmobiliaria-c-rdoba-3D/)**
 
-Demo de una propiedad ficticia con dos experiencias que usan el mismo modelo 3D:
+## Demos
 
-- **Ver construcción:** secuencia de 48 segundos y nueve etapas, con excavación ilustrativa, armaduras, hormigón, ladrillos por hiladas, cubierta, instalaciones y terminaciones. Permite pausar, reiniciar y recorrer el progreso en ambas direcciones.
-- **Explorar la casa:** maqueta que se puede girar, desplazar y acercar; plano superior; siete ambientes seleccionables y recorrido a pie entre ellos, con colisiones contra paredes, vidrios y muebles principales.
+<table>
+  <tr>
+    <td width="33%" valign="top">
+      <a href="https://geroo03.github.io/inmobiliaria-c-rdoba-3D/"><img src="docs/img/casa-patio.jpg" alt="Casa Patio: maqueta 3D de la casa con sus ambientes"></a>
+      <h3><a href="https://geroo03.github.io/inmobiliaria-c-rdoba-3D/">Casa Patio</a></h3>
+      Construcción animada en 9 etapas y recorrido a pie por los 7 ambientes de una casa.<br>
+      <sub>Modelo 3D ficticio · Three.js</sub><br>
+      <a href="docs/demos/casa-patio.md">Ficha de la demo</a>
+    </td>
+    <td width="33%" valign="top">
+      <a href="https://geroo03.github.io/inmobiliaria-c-rdoba-3D/noveno/"><img src="docs/img/noveno.jpg" alt="Noveno: planta del piso 9 con los departamentos 9A, 9B y 9C"></a>
+      <h3><a href="https://geroo03.github.io/inmobiliaria-c-rdoba-3D/noveno/">Noveno</a></h3>
+      Tres departamentos en un piso 9: compararlos, entrar a cada uno y salir al balcón.<br>
+      <sub>Modelo 3D ficticio · Three.js</sub><br>
+      <a href="docs/demos/noveno.md">Ficha de la demo</a>
+    </td>
+    <td width="33%" valign="top">
+      <a href="https://geroo03.github.io/inmobiliaria-c-rdoba-3D/visita-real/"><img src="docs/img/visita-real.jpg" alt="Visita real: foto del living con el plano orientativo y la lista de ambientes"></a>
+      <h3><a href="https://geroo03.github.io/inmobiliaria-c-rdoba-3D/visita-real/">Visita real</a></h3>
+      Un departamento real en 8 fotos: elegir el ambiente en un plano, ampliar y compartir.<br>
+      <sub>Fotos reales con licencia libre · sin WebGL</sub><br>
+      <a href="docs/demos/visita-real.md">Ficha de la demo</a>
+    </td>
+  </tr>
+</table>
 
-Incluye texturas procedurales, muebles con bordes suavizados, techo opcional, iluminación de día o atardecer, un plano de ubicación y pantalla completa cuando el navegador la admite. Las superficies, la distribución y la secuencia constructiva son ilustrativas.
+> [!IMPORTANT]
+> Ninguna demo es una propiedad en venta. Casa Patio y Noveno son modelos generados por código. La Visita real usa fotos de un departamento de Brisbane publicadas con licencia CC BY-SA 4.0 y un plano orientativo, sin medidas verificadas.
 
-## Controles
+## Del prototipo a una propiedad real
 
-| Vista | PC | Celular |
-| --- | --- | --- |
-| Maqueta | Arrastrar para girar; botón derecho para desplazar; rueda para acercar | Un dedo para girar; dos dedos para desplazar y acercar |
-| Plano superior | Arrastrar para desplazar; seleccionar un ambiente | Arrastrar el plano y tocar un ambiente |
-| Dentro de la casa | Arrastrar para mirar; **WASD o flechas** para caminar | Arrastrar para mirar; mantener pulsadas las flechas del visor para caminar |
-| Cambiar de ambiente | Lista o pequeño plano de ubicación | Lista o pequeño plano de ubicación |
-| Volver al plano | **Escape**, botón Plano o Volver al plano | Botón Plano o Volver al plano |
+Las demos marcan tres niveles posibles para mostrar un inmueble existente:
 
-La abertura de la galería permite caminar al patio. Para moverse con el teclado, entrar primero a un ambiente. Durante la transición de cámara el movimiento se habilita al llegar.
+1. **Fotos y plano** → una visita por ambientes como la **Visita real**. Se puede hacer con fotos comunes.
+2. **Panoramas 360° y plano** → mirar alrededor desde cada punto de cada ambiente.
+3. **Modelo fiel o captura espacial** → maqueta y recorrido libre como en **Casa Patio** o **Noveno**, pero de la propiedad real.
+
+Primer paso concreto: elegir una propiedad, completar su ficha y conseguir el plano. Está todo en **[Por dónde empezar](docs/producto/por-donde-empezar.md)**.
+
+## Inicio rápido
+
+```sh
+git clone https://github.com/geroo03/inmobiliaria-c-rdoba-3D.git
+cd inmobiliaria-c-rdoba-3D
+npm start    # sirve el sitio en http://127.0.0.1:4173
+npm test     # 17 pruebas, sin instalar dependencias
+```
+
+Requisitos: Python 3 para el servidor local, Node.js 20 o posterior para las pruebas y un navegador con WebGL para las demos 3D. En Mac también se puede hacer doble clic en `scripts/ABRIR_PROTOTIPO.command`.
+
+No hay compilación ni dependencias que instalar: el sitio es estático y trae sus recursos (Three.js y la tipografía) en `dist/vendor/`.
+
+## Estructura
+
+```text
+dist/                Sitio publicado
+├── index.html …     Casa Patio y módulos 3D compartidos
+├── noveno/          Noveno
+├── visita-real/     Visita real (datos, visor y fotos)
+└── vendor/          Three.js y DM Sans, con sus licencias
+docs/                Documentación (índice en docs/README.md)
+tests/               Pruebas con node:test
+scripts/             Lanzador para Mac
+.github/workflows/   Publicación en GitHub Pages
+```
 
 ## Documentación
 
-- [Por dónde empezar](docs/POR_DONDE_EMPEZAR.md): pasos y ficha para elegir y preparar la primera propiedad real.
-- [Guía de producción real](docs/GUIA_PRODUCCION_REAL.md): fotos comunes, panoramas 360°, captura espacial, alternativas y arquitectura propuesta.
-- [Informe del prototipo](docs/INFORME_DEL_PROTOTIPO.md): qué se construyó, cómo funciona, archivos entregados y verificaciones realizadas.
-- [Mejoras de construcción y recorrido](docs/MEJORAS_CONSTRUCCION_Y_RECORRIDO.md): cambios de esta versión, controles y alcance del realismo.
-- [Demo del noveno piso](docs/DEMO_NOVENO_PISO.md): tres unidades, vistas desde altura, enlaces y preparación de una propiedad real.
+| Documento | Para qué |
+| --- | --- |
+| [Por dónde empezar](docs/producto/por-donde-empezar.md) | Pasos, ficha y checklist para la primera propiedad real |
+| [Guía de producción real](docs/producto/guia-produccion-real.md) | Qué permite cada material, alternativas (proveedor, editor o desarrollo propio) y arquitectura propuesta |
+| [Casa Patio](docs/demos/casa-patio.md) · [Noveno](docs/demos/noveno.md) · [Visita real](docs/demos/visita-real.md) | Qué hace cada demo, controles, enlaces y código |
+| [Documentación técnica](docs/tecnico/arquitectura.md) | Módulos, pruebas, publicación y estado de calidad |
+| [Créditos y licencias](docs/creditos-y-licencias.md) | Fotos, tipografía y librerías de terceros |
+| [CHANGELOG](CHANGELOG.md) | Qué cambió en cada versión y cómo se verificó |
 
-## Publicación en GitHub Pages
+El [índice de la documentación](docs/README.md) incluye un glosario.
 
-El sitio se publica desde `dist/` mediante el workflow [pages.yml](.github/workflows/pages.yml). Se ejecuta al subir cambios de esa carpeta a `main` y también se puede iniciar desde **Actions → Publicar en GitHub Pages → Run workflow**.
+## Publicación
 
-GitHub Pages debe tener **GitHub Actions** como origen en **Settings → Pages → Build and deployment**. No hace falta instalar dependencias ni ejecutar un compilador: la aplicación es estática y ya incluye sus recursos.
+Cada cambio en `dist/`, `tests/` o `package.json` que llega a `main` se comprueba y se publica solo en GitHub Pages mediante [pages.yml](.github/workflows/pages.yml). Solo se publica `dist/`; la documentación se lee desde este repositorio. Detalles en la [documentación técnica](docs/tecnico/arquitectura.md#publicación).
 
-La publicación sirve únicamente la aplicación de `dist/`. Los documentos se consultan desde este repositorio. El resultado de cada publicación queda en la [pestaña Actions](https://github.com/geroo03/inmobiliaria-c-rdoba-3D/actions).
+## Créditos
 
-Configuración basada en el [flujo oficial de GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
-
-## Abrir en tu computadora
-
-Desde esta carpeta:
-
-```sh
-python3 -m http.server 4173 --bind 127.0.0.1 --directory dist
-```
-
-Abrir **http://127.0.0.1:4173** en Chrome, Edge o Safari con WebGL habilitado. En Mac también se puede ejecutar `scripts/ABRIR_PROTOTIPO.command` con doble clic.
-
-El prototipo se sirve por HTTP porque usa módulos JavaScript. Todas las dependencias, incluida la tipografía, están en `dist/vendor`: no necesita claves, una cuenta ni descargas de recursos externos al navegar.
-
-## Archivos
-
-- `dist/index.html`: interfaz y contenido.
-- `dist/styles.css`: diseño y adaptación a pantallas pequeñas.
-- `dist/app.js`: modelo 3D, construcción, selección y cámaras.
-- `dist/construction.js`: etapas, armaduras, estructura, mampostería y elementos temporales de obra.
-- `dist/walk-navigation.js` y `dist/movement.js`: controles interiores y colisiones.
-- `dist/scene-materials.js`: texturas generadas localmente.
-- `dist/noveno/`: experiencia del edificio y los tres departamentos, con datos, modelos, entorno e interfaz propios.
-- `dist/vendor/`: Three.js 0.164.1 (licencia MIT) y DM Sans (licencia OFL); licencias incluidas.
-
-Las pruebas de colisión se ejecutan con `npm test` (Node.js 20 o posterior, sin instalar dependencias). GitHub Actions comprueba la sintaxis de los módulos y ejecuta esas pruebas antes de publicar.
-
-La casa es un modelo geométrico creado para esta demostración. Para una versión de una propiedad real, reemplazar la distribución y el mobiliario por un modelo construido a partir del plano y las referencias de esa propiedad. El acabado actual es una maqueta estilizada, no un render fotográfico ni un levantamiento arquitectónico.
+Fotos de la Visita real: Chris Olszewski / Wikimedia Commons, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). [Three.js](https://threejs.org/) (MIT) y DM Sans (SIL OFL 1.1). Detalle por archivo en [créditos y licencias](docs/creditos-y-licencias.md).

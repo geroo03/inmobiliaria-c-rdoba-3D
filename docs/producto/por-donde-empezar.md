@@ -2,7 +2,7 @@
 
 El primer paso es **elegir una propiedad y reunir su plano y material visual**. Con eso podemos decidir el tipo de captura y construir una visita que los clientes puedan evaluar.
 
-Este documento organiza el trabajo futuro. Los casilleros representan tareas pendientes; el prototipo ficticio ya está documentado en [INFORME_DEL_PROTOTIPO.md](INFORME_DEL_PROTOTIPO.md).
+Este documento organiza el trabajo futuro. Los casilleros representan tareas pendientes; las demos ya construidas se describen en el [índice de la documentación](../README.md).
 
 ## 1. Elegí la propiedad piloto
 
@@ -58,13 +58,13 @@ No hace falta publicar la dirección exacta para preparar esta ficha o probar el
 
 | Situación actual | Próxima acción | Qué podremos mostrar |
 | --- | --- | --- |
-| Solo fotos comunes | Ordenarlas por ambiente y conseguir el plano | Un plano que abre galerías reales |
+| Solo fotos comunes | Ordenarlas por ambiente y conseguir el plano | Un plano que abre galerías reales, como la [Visita real](../demos/visita-real.md) |
 | Plano y fotos comunes | Organizar una sesión de captura 360° | Luego, una visita que permita mirar alrededor |
 | Plano y panoramas completos | Revisar calidad, ubicar escenas y conectar ambientes | Un primer tour real con plano seleccionable |
 | Necesitás maqueta 3D desde el inicio | Cotizar captura espacial o modelado fiel, además del contenido interior | Vista de conjunto 3D y acceso a ambientes |
 | La propiedad está en proyecto | Conseguir el modelo arquitectónico y referencias de diseño | Una visualización identificada como proyecto |
 
-Para elegir entre proveedor, editor de tours y desarrollo propio, consultá las [alternativas de producción](GUIA_PRODUCCION_REAL.md#4-tres-caminos-de-implementación).
+Para elegir entre proveedor, editor de tours y desarrollo propio, consultá las [alternativas de producción](guia-produccion-real.md#4-tres-caminos-de-implementación).
 
 ## 4. Probá primero dos ambientes conectados
 
@@ -99,7 +99,7 @@ Si habrá una maqueta 3D, revisar también posiciones de paredes, puertas, venta
 
 Orden propuesto para el trabajo técnico:
 
-1. **Separar datos y código.** Sacar la propiedad ficticia fija de la lógica del visor y definir un archivo de datos por propiedad.
+1. **Separar datos y código.** Definir un archivo de datos por propiedad, separado de la lógica del visor. La [Visita real](../demos/visita-real.md#cómo-adaptarla-a-una-propiedad-propia) ya funciona así y es el mejor punto de partida para un piloto con fotos; en Casa Patio y Noveno la distribución todavía está escrita en el código.
 2. **Conectar contenido real.** Cargar el plano y las escenas con sus identificadores.
 3. **Resolver la navegación.** Selección de ambientes, dirección inicial de mirada, conexiones y regreso al plano.
 4. **Incorporar la maqueta si está en el alcance.** Enlazar el modelo real con los mismos ambientes.

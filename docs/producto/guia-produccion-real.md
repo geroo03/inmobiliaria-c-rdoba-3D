@@ -20,7 +20,7 @@ Para visitar, el objetivo es abrir un enlace sin instalar una aplicación. La ca
 
 | Material disponible | Resultado que podemos construir | Trabajo adicional |
 | --- | --- | --- |
-| Fotos comunes de una publicación | Galería real por ambiente, accesible desde un plano | Identificar qué muestra cada foto y conseguir el plano |
+| Fotos comunes de una publicación | Galería real por ambiente, accesible desde un plano (ejemplo: [Visita real](../demos/visita-real.md)) | Identificar qué muestra cada foto y conseguir el plano |
 | Fotos 360° completas | Mirar alrededor desde cada punto fotografiado y saltar a otros puntos | Ubicar los puntos y conectar el recorrido |
 | Plano real y panoramas 360° | Vista superior seleccionable conectada con interiores reales | Dibujar zonas y asociarlas con sus panoramas |
 | Modelo 3D fiel y panoramas 360° | Maqueta sin techo desde arriba, con acceso a imágenes reales | Preparar el modelo y alinear ambientes y capturas |
@@ -180,7 +180,7 @@ Ejemplo parcial de datos, propuesto para desarrollo:
 
 Antes de implementarlo hay que definir el formato final del visor, las unidades de los ángulos, los niveles de resolución y las coordenadas de los enlaces. Los datos deben validarse: un identificador de escena o una referencia a un archivo inexistente debe impedir publicar la propiedad.
 
-En Habita habría que extraer del código la distribución fija, crear las correspondencias por identificador e incorporar la carga de imágenes. Cambiar solamente colores o texturas del modelo actual no lo convierte en una captura real.
+En Habita, la [Visita real](../demos/visita-real.md) ya separa los datos (`data.js`, `photos.js`) del visor (`app.js`): sus ambientes, fotos y puntos de enlace cumplen el papel de `rooms`, `scenes` y `links` de este esquema, y es la base natural para el piloto. Casa Patio y Noveno todavía tienen la distribución escrita en el código; cambiar solamente colores o texturas de esos modelos no los convierte en una captura real.
 
 ## 7. PC, celular y calidad de carga
 
@@ -194,7 +194,7 @@ Las metas concretas de carga se fijarán después de medir el primer material re
 
 ## 8. Qué hace falta para publicar a clientes
 
-La demo de este repositorio está preparada para acceso público mediante GitHub Pages. La primera versión también tuvo una publicación privada para revisión. El producto real necesita una decisión explícita de quién puede abrir cada propiedad: visitantes públicos o personas invitadas. Tener un enlace difícil de adivinar no equivale a un acceso privado.
+Las demos de este repositorio están preparadas para acceso público mediante GitHub Pages. La primera versión también tuvo una publicación privada para revisión. El producto real necesita una decisión explícita de quién puede abrir cada propiedad: visitantes públicos o personas invitadas. Tener un enlace difícil de adivinar no equivale a un acceso privado.
 
 Para la operación propongo:
 
@@ -228,7 +228,7 @@ Pedir presupuestos por separado permite entender qué se está comprando:
 
 Una misma persona puede cubrir varios roles. Para el piloto debe estar claro quién captura, quién valida la distribución, quién monta la experiencia y quién autoriza su publicación.
 
-No se fijan precios porque faltan superficie real, ubicación de la captura, cantidad de propiedades, material disponible y nivel de detalle requerido. Esos datos se completan con la [guía de inicio](POR_DONDE_EMPEZAR.md).
+No se fijan precios porque faltan superficie real, ubicación de la captura, cantidad de propiedades, material disponible y nivel de detalle requerido. Esos datos se completan con la [guía de inicio](por-donde-empezar.md).
 
 ## 11. Cuándo considerar terminado el primer piloto
 
