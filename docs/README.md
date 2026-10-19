@@ -7,7 +7,7 @@
 | Si querés… | Leé |
 | --- | --- |
 | Llevar el producto a una **propiedad real** | 1. [Por dónde empezar](producto/por-donde-empezar.md) → 2. [Guía de producción real](producto/guia-produccion-real.md) |
-| Entender o presentar una **demo** | [Casa Patio](demos/casa-patio.md) · [Noveno](demos/noveno.md) · [Visita real](demos/visita-real.md) |
+| Entender o presentar una **demo** | [Casa Patio](demos/casa-patio.md) · [Noveno](demos/noveno.md) · [Visita real](demos/visita-real.md) · [Recorrido 360°](demos/visita-360.md) |
 | **Modificar el código**, probarlo o publicarlo | [Documentación técnica](tecnico/arquitectura.md) |
 | Saber **qué cambió** en cada versión | [CHANGELOG](../CHANGELOG.md) |
 | Reutilizar fotos, tipografía o librerías | [Créditos y licencias](creditos-y-licencias.md) |
@@ -28,6 +28,7 @@
 | [Casa Patio](demos/casa-patio.md) | Construcción en nueve etapas y recorrido a pie de una casa ficticia: qué hace, controles y cómo está hecha |
 | [Noveno](demos/noveno.md) | Edificio con tres departamentos en un piso 9: unidades, vistas, enlaces y cómo pasar a un edificio real |
 | [Visita real](demos/visita-real.md) | Departamento real mostrado con 8 fotos y un plano orientativo: qué hace y **cómo adaptarlo a una propiedad propia** |
+| [Recorrido 360°](demos/visita-360.md) | Tres panoramas 360° unidos por puntos de paso: qué hace y **cómo cargar panoramas propios** |
 
 ### Técnica y referencia
 

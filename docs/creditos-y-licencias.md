@@ -31,6 +31,18 @@ Resumen orientativo; lo que rige es el [texto de la licencia](https://creativeco
 
 Por eso, al reutilizar la Visita real: mantener los créditos visibles, conservar el aviso de que la propiedad no está en venta y el autor no patrocina la demo, y registrar aquí cualquier cambio sobre las imágenes.
 
+## Panoramas del Recorrido 360°
+
+Los tres panoramas son de **Greg Zaal**, publicados en [Poly Haven](https://polyhaven.com/) con licencia [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (dominio público: se pueden usar y modificar sin pedir permiso ni citar). Igual se acreditan en la página.
+
+| Archivos en `dist/visita-360/panoramas/` | En la demo | Original en Poly Haven |
+| --- | --- | --- |
+| `terraza.jpg`, `terraza-preview.jpg` | Terraza | [Lythwood Terrace](https://polyhaven.com/a/lythwood_terrace) |
+| `living.jpg`, `living-preview.jpg` | Living | [Lythwood Lounge](https://polyhaven.com/a/lythwood_lounge) |
+| `dormitorio.jpg`, `dormitorio-preview.jpg` | Dormitorio | [Lythwood Room](https://polyhaven.com/a/lythwood_room) |
+
+**Cambios:** se partió del JPG de 8192 × 4096 que ofrece Poly Haven y se redujo a 4096 × 2048 (vista en alta) y 1024 × 512 (vista previa), sin retoques de contenido. La imagen de vista previa [dist/og/visita-360.jpg](../dist/og/visita-360.jpg) muestra el living con el título encima.
+
 ## Tipografía
 
 **DM Sans** — Copyright 2014 The DM Sans Project Authors. Licencia [SIL Open Font License 1.1](https://openfontlicense.org/). Archivo: `dist/vendor/dm-sans.ttf`; licencia completa en [dist/vendor/LICENSE-DM-Sans.txt](../dist/vendor/LICENSE-DM-Sans.txt).

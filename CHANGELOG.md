@@ -2,6 +2,20 @@
 
 Cambios de cada versión, de la más reciente a la más antigua, con las verificaciones hechas al cerrarla. Cada versión corresponde a un commit de `main`.
 
+## Recorrido 360° · 19/10/2026
+
+### Agregado
+- Demo [`/visita-360/`](https://geroo03.github.io/inmobiliaria-c-rdoba-3D/visita-360/): tres panoramas 360° de una casa de campo (terraza, living y dormitorio) unidos por puntos de paso. Visor propio con Three.js: arrastre con inercia, zoom, giro automático al abrir, pantalla completa, carga en dos etapas y liberación de memoria al cambiar de ambiente.
+- Panoramas de Greg Zaal / Poly Haven con licencia CC0, reducidos a 4096 × 2048 con vistas previas de 1024 × 512.
+- «360°» en el menú común de las cuatro páginas; enlace desde la Visita real; vista previa para WhatsApp, QR y «Consultar por WhatsApp» también en la página nueva.
+- 4 pruebas nuevas del recorrido (29 en total) y verificación de que el menú enlaza todas las páginas.
+
+### Verificado
+- 29 pruebas automatizadas con `npm test`.
+- Orientación comprobada en el navegador: al entrar a la terraza la casa queda centrada y el punto «Ir al living» cae sobre la entrada; en el living, «Salir a la terraza» cae sobre los ventanales.
+- Arrastre, zoom, puntos de paso, tarjetas, botón Atrás del navegador, enlace compartido y mensaje de WhatsApp probados en Chrome (laptop) y WebKit (iPhone).
+- Revisión visual de las 4 demos en 7 tamaños, sin errores, desbordes ni textos recortados; el menú de cuatro demos entra completo en celulares de 360 y 390 px.
+
 ## Herramientas para presentar: QR, WhatsApp y vista previa · 19/10/2026
 
 ### Agregado

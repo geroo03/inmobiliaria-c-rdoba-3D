@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, statSync } from 'node:fs';
 
 const BASE = 'https://geroo03.github.io/inmobiliaria-c-rdoba-3D/';
-const pages = [['', 'Casa Patio'], ['noveno/', 'Noveno'], ['visita-real/', 'Visita real']];
+const pages = [['', 'Casa Patio'], ['noveno/', 'Noveno'], ['visita-real/', 'Visita real'], ['visita-360/', '360°']];
 const dist = path => new URL(`../dist/${path}`, import.meta.url);
 const html = path => readFileSync(dist(`${path}index.html`), 'utf8');
 const meta = (source, key) => source.match(new RegExp(`<meta (?:property|name)="${key}" content="([^"]*)"`))?.[1];
@@ -14,6 +14,7 @@ test('every page shares the header, its menu and the QR button module', () => {
     for (const asset of ['shared.css', 'qr-share.js', 'vendor/qrcode.js']) assert.ok(source.includes(`${path ? '../' : './'}${asset}"`), `${name}: ${asset}`);
     assert.match(source, new RegExp(`<a href="[^"]*" aria-current="page">${name}</a>`), name);
     assert.equal(source.match(/class="demo-nav"/g).length, 1, name);
+    for (const [other] of pages) assert.ok(source.includes(`href="${other === path ? './' : (path ? '../' : './') + other}"`), `${name}: enlace a ${other || 'Casa Patio'}`);
   }
 });
 test('every page has a link preview with an existing, light JPEG image', () => {

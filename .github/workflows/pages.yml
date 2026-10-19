@@ -39,7 +39,7 @@ jobs:
           test -s dist/contact.js
           test -s dist/qr-share.js
           test -s dist/vendor/qrcode.js
-          for image in casa-patio noveno visita-real; do test -s "dist/og/$image.jpg"; done
+          for image in casa-patio noveno visita-real visita-360; do test -s "dist/og/$image.jpg"; done
           test -s dist/vendor/three.module.js
           test -s dist/vendor/OrbitControls.js
           test -s dist/vendor/RoundedBoxGeometry.js
@@ -48,7 +48,9 @@ jobs:
           test -s dist/noveno/index.html
           test -s dist/visita-real/index.html
           test -s dist/visita-real/photos/living.jpg
-          for script in dist/*.js dist/noveno/*.js dist/visita-real/*.js; do node --check "$script"; done
+          test -s dist/visita-360/index.html
+          for panorama in terraza living dormitorio; do test -s "dist/visita-360/panoramas/$panorama.jpg"; test -s "dist/visita-360/panoramas/$panorama-preview.jpg"; done
+          for script in dist/*.js dist/noveno/*.js dist/visita-real/*.js dist/visita-360/*.js; do node --check "$script"; done
           node --test tests/*.test.mjs
 
       - name: Configurar GitHub Pages

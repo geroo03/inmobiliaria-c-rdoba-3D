@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ed">
+  <meta name="description" content="Recorré una casa en 360°: girá la vista en todas las direcciones y pasá de la terraza al living y al dormitorio. Panoramas de ejemplo con licencia libre.">
+  <title>Recorrido 360° · Mirá alrededor — Habita</title>
+  <link rel="icon" href="../favicon.svg"><link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="../shared.css">
+  <meta property="og:type" content="website"><meta property="og:locale" content="es_AR"><meta property="og:site_name" content="Habita">
+  <meta property="og:title" content="Recorrido 360° · Mirá alrededor, ambiente por ambiente"><meta property="og:description" content="Girá la vista en todas las direcciones y pasá de la terraza al living y al dormitorio. Demo interactiva con panoramas 360° de ejemplo.">
+  <meta property="og:url" content="https://geroo03.github.io/inmobiliaria-c-rdoba-3D/visita-360/"><meta property="og:image" content="https://geroo03.github.io/inmobiliaria-c-rdoba-3D/og/visita-360.jpg">
+  <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Living de una casa de campo visto en un recorrido 360°">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="../vendor/qrcode.js" defer></script><script type="module" src="../qr-share.js"></script>
+  <script type="importmap">{"imports":{"three":"../vendor/three.module.js"}}</script>
+</head>
+<body>
+  <header class="header"><a href="../" class="brand" aria-label="Habita, inicio"><svg class="brand-mark" viewBox="0 0 32 36" fill="none" aria-hidden="true"><path d="M3 33V15a13 13 0 0 1 26 0v18M10 33V16a6 6 0 0 1 12 0v17M0 33h32" stroke="currentColor" stroke-width="1.8"/></svg>habita<span>.</span></a><span class="tagline">ESPACIOS PARA VIVIR</span><nav class="demo-nav" aria-label="Demos de Habita"><a href="../">Casa Patio</a><a href="../noveno/">Noveno</a><a href="../visita-real/">Visita real</a><a href="./" aria-current="page">360°</a></nav></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">EL SIGUIENTE PASO: 360°</p><h1>Mirá alrededor. <em>Como si estuvieras ahí.</em></h1></div><p>Arrastrá para girar la vista.<br>Tocá los puntos para pasar de un ambiente a otro.</p></section>
+    <section class="experience" aria-label="Recorrido 360°">
+      <div class="experience-bar"><div class="property"><span class="badge-360" aria-hidden="true">360°</span><div><h2 id="property-name">Casa de campo Lythwood</h2><span id="property-place">Panoramas 360° de ejemplo · Poly Haven</span></div></div><button id="share" class="outline">↗ Compartir vista</button></div>
+      <div id="stage" class="stage" tabindex="0" aria-label="Visor 360°. Arrastrá o usá las flechas para mirar alrededor. Más y menos acercan. Los puntos llevan a otros ambientes.">
+        <canvas id="scene"></canvas>
+        <div class="stage-shade" aria-hidden="true"></div>
+        <div id="hotspots" class="hotspots"></div>
+        <div class="scene-heading"><span>ESTÁS EN</span><h3 id="scene-title">Terraza</h3></div>
+        <div class="tools" role="group" aria-label="Controles del visor"><button id="zoom-out" aria-label="Alejar">−</button><button id="zoom-in" aria-label="Acercar">+</button><button id="auto" aria-label="Detener el giro automático" aria-pressed="true">❚❚</button><button id="fullscreen" aria-label="Pantalla completa">⛶</button></div>
+        <div class="stage-bottom"><span id="scene-position">01 / 03</span><span class="hint">Arrastrá para mirar alrededor</span><button id="credits" aria-label="Ver autor, fuente y licencia de los panoramas">ⓘ Créditos</button></div>
+        <div id="loading" class="loading" role="status"><span></span>Cargando panorama…</div>
+        <div id="error" class="error" role="alert" hidden><strong>No se pudo cargar el panorama.</strong><p>Revisá la conexión y volvé a intentar.</p><button id="retry">Reintentar</button></div>
+        <div id="webgl-error" class="error" role="alert" hidden><strong>Este navegador no puede mostrar el 360°.</strong><p>Probá con Chrome, Edge o Safari actualizados. También podés <a href="./panoramas/living.jpg">ver el panorama del living</a> como imagen.</p></div>
+      </div>
+      <div class="below">
+        <div class="scenes"><div class="scenes-title"><h3>Ambientes del recorrido</h3><span id="progress">0 de 3 ambientes</span></div><div id="scene-list" class="scene-list"></div></div>
+        <div class="scene-detail"><span class="eyebrow" id="scene-number">AMBIENTE 01</span><h3 id="detail-name">Terraza</h3><p id="scene-description"></p><a id="whatsapp" class="whatsapp-button" href="https://wa.me/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.4 12.7L3.5 20.5l4.4-1.1A8.5 8.5 0 1 0 12 3.5z"/></svg>Consultar por WhatsApp</a></div>
+      </div>
+      <div class="experience-note"><span class="note-dot"></span><p>Demo con panoramas 360° de ejemplo de una casa de campo. Las conexiones entre ambientes son orientativas y la propiedad no se ofrece en venta.</p></div>
+    </section>
+    <section class="about"><div><p class="eyebrow">DE LA FOTO AL 360°</p><h2>Cada punto,<br><em>en todas las direcciones.</em></h2></div><div><p>Una foto común muestra un encuadre. Un panorama 360° deja mirar el ambiente completo desde el lugar donde se tomó: techo, piso y cada rincón. Uniendo varios puntos se arma un recorrido.</p><p>Para una propiedad real se capturan panoramas con una cámara 360° desde cada ambiente y se conectan con su plano. El resto de esta demo sirve tal cual.</p><button id="all-credits" class="text-link">Ver fuentes y licencia de los panoramas ↗</button></div></section>
+  </main>
+  <footer><a href="../" class="brand">habita<span>.</span></a><span>Panoramas: Greg Zaal / Poly Haven · <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0</a></span><a href="../visita-real/">Ver la visita con fotos ↗</a></footer>
+  <dialog id="credits-dialog" aria-labelledby="credits-title"><div class="dialog-head"><div><p class="eyebrow">PANORAMAS Y PROCEDENCIA</p><h2 id="credits-title">Un recorrido con fuentes.</h2></div><button data-close aria-label="Cerrar créditos">×</button></div><p>Panoramas de <a id="credit-author" href="https://polyhaven.com/" target="_blank" rel="noopener">Greg Zaal</a> publicados en Poly Haven con licencia <a id="credit-license" href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0</a> (dominio público). Se usan las versiones en JPG reducidas a 4096 × 2048 píxeles, sin retoques.</p><p>Las tres escenas pertenecen a un mismo lugar, Lythwood. No contamos con su plano: las conexiones entre ambientes son orientativas. El autor no patrocina esta demo.</p><ul id="credits-list" class="credits-list"></ul></dialog>
+  <dialog id="share-dialog" aria-labelledby="share-title"><div class="dialog-head"><h2 id="share-title">Compartir esta vista</h2><button data-close aria-label="Cerrar enlace">×</button></div><p>Copiá el enlace público. Abre este mismo ambiente.</p><label for="share-url">Enlace del recorrido</label><input id="share-url" readonly><button id="copy-again" class="primary">Copiar enlace</button></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div><span id="announcement" class="sr-only" role="status" aria-live="polite"></span>
+  <noscript><p class="no-script">Activá JavaScript para usar el recorrido 360°. También podés <a href="./panoramas/living.jpg">ver el panorama del living</a>.</p></noscript>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

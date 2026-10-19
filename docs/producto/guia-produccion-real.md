@@ -21,7 +21,7 @@ Para visitar, el objetivo es abrir un enlace sin instalar una aplicación. La ca
 | Material disponible | Resultado que podemos construir | Trabajo adicional |
 | --- | --- | --- |
 | Fotos comunes de una publicación | Galería real por ambiente, accesible desde un plano (ejemplo: [Visita real](../demos/visita-real.md)) | Identificar qué muestra cada foto y conseguir el plano |
-| Fotos 360° completas | Mirar alrededor desde cada punto fotografiado y saltar a otros puntos | Ubicar los puntos y conectar el recorrido |
+| Fotos 360° completas | Mirar alrededor desde cada punto fotografiado y saltar a otros puntos (ejemplo: [Recorrido 360°](../demos/visita-360.md)) | Ubicar los puntos y conectar el recorrido |
 | Plano real y panoramas 360° | Vista superior seleccionable conectada con interiores reales | Dibujar zonas y asociarlas con sus panoramas |
 | Modelo 3D fiel y panoramas 360° | Maqueta sin techo desde arriba, con acceso a imágenes reales | Preparar el modelo y alinear ambientes y capturas |
 | Captura espacial procesada | Modelo navegable de la propiedad, según el sistema utilizado | Capturar con el flujo compatible, procesar y revisar |
@@ -64,6 +64,8 @@ Es un camino para que alguien prepare los tours desde un editor y luego los publ
 ### C. Desarrollo propio con plano y visor 360°
 
 Podemos adaptar la interfaz de Habita y conectar un plano SVG o un modelo propio con un visor panorámico como Marzipano. Su herramienta admite panoramas esféricos equirectangulares con proporción 2:1 o caras de cubo y permite exportar una aplicación web. El plano de la propiedad y su correspondencia con las escenas deben agregarse como parte del proyecto. [Formatos y exportación](https://www.marzipano.net/tool/), [visor y documentación](https://www.marzipano.net/).
+
+El [Recorrido 360°](../demos/visita-360.md) de este repositorio ya es un visor propio de este tipo, hecho con Three.js en lugar de Marzipano: panoramas equirectangulares, puntos de paso y enlaces por escena, sin servicios externos.
 
 **Elegirlo cuando:** se quiera controlar la experiencia, los archivos y la evolución del sistema, asumiendo el desarrollo y mantenimiento.
 

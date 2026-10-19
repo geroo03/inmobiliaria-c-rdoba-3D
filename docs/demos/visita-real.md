@@ -111,7 +111,7 @@ Para un piloto con fotos de una propiedad real, estos son los puntos a cambiar:
 6. **Pruebas:** `tests/visita-real.test.mjs` no depende de esta propiedad. Verifica que cada foto exista y tenga autor, fuente y licencia, que el plano entre en su lienzo y que el visor no tenga datos de la propiedad escritos en el código.
 7. **Antes de publicar:** revisar en las fotos personas, documentos, reflejos y otros datos privados, y confirmar con el responsable de la propiedad el material final ([checklist completa](../producto/por-donde-empezar.md#7-condiciones-para-enviar-el-enlace-a-clientes)).
 
-El siguiente salto de calidad es reemplazar cada foto por **panoramas 360°** para poder mirar alrededor desde cada punto: el plano, los ambientes y los enlaces de esta demo siguen sirviendo.
+El siguiente salto de calidad es reemplazar cada foto por **panoramas 360°** para poder mirar alrededor desde cada punto, como en el [Recorrido 360°](visita-360.md): el plano, los ambientes y los enlaces de esta demo siguen sirviendo.
 
 ---
 

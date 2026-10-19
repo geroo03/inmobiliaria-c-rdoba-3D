@@ -19,6 +19,8 @@ y no está alcanzado por la reserva anterior:
   Texto completo en dist/vendor/LICENSE-DM-Sans.txt.
 - QR Code Generator for JavaScript 1.4.4 (Kazuhiko Arase), en dist/vendor/qrcode.js:
   licencia MIT. Texto completo en dist/vendor/LICENSE-qrcode.txt.
+- Panoramas de dist/visita-360/panoramas/: Greg Zaal, Poly Haven, CC0 1.0
+  (dominio público). Detalle en docs/creditos-y-licencias.md.
 - Fotografías de dist/visita-real/photos/: Chris Olszewski, Wikimedia Commons,
   licencia CC BY-SA 4.0. Detalle por archivo en docs/creditos-y-licencias.md.
 

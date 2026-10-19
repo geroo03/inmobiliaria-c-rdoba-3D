@@ -60,7 +60,7 @@ No hace falta publicar la dirección exacta para preparar esta ficha o probar el
 | --- | --- | --- |
 | Solo fotos comunes | Ordenarlas por ambiente y conseguir el plano | Un plano que abre galerías reales, como la [Visita real](../demos/visita-real.md) |
 | Plano y fotos comunes | Organizar una sesión de captura 360° | Luego, una visita que permita mirar alrededor |
-| Plano y panoramas completos | Revisar calidad, ubicar escenas y conectar ambientes | Un primer tour real con plano seleccionable |
+| Plano y panoramas completos | Revisar calidad, ubicar escenas y conectar ambientes | Un primer tour real con plano seleccionable, como el [Recorrido 360°](../demos/visita-360.md) |
 | Necesitás maqueta 3D desde el inicio | Cotizar captura espacial o modelado fiel, además del contenido interior | Vista de conjunto 3D y acceso a ambientes |
 | La propiedad está en proyecto | Conseguir el modelo arquitectónico y referencias de diseño | Una visualización identificada como proyecto |
 

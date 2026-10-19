@@ -27,3 +27,5 @@
 @media(prefers-reduced-motion:reduce){.whatsapp-button{transition:none}}
 /* En tablet el botón queda solo con su ícono y se oculta el lema, para que el encabezado entre en una línea. */
 @media(min-width:761px) and (max-width:1100px){.header .brand-tagline,.header .brand-line,.header .tagline{display:none}.header .qr-button{padding:8px}.header .qr-button span{display:none}}
+/* Con cuatro demos en el menú, en celulares angostos se achican el logo y los ítems para que todo entre en una línea. */
+@media(max-width:400px){.header .brand{font-size:26px}.header .demo-nav a{padding:6px 6px;font-size:9.5px}}
