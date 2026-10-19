@@ -38,8 +38,10 @@ jobs:
           test -s dist/vendor/three.module.js
           test -s dist/vendor/OrbitControls.js
           test -s dist/vendor/RoundedBoxGeometry.js
+          test -s dist/vendor/RoomEnvironment.js
           test -s dist/vendor/dm-sans.ttf
-          for script in dist/*.js; do node --check "$script"; done
+          test -s dist/noveno/index.html
+          for script in dist/*.js dist/noveno/*.js; do node --check "$script"; done
           node --test tests/*.test.mjs
 
       - name: Configurar GitHub Pages

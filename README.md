@@ -1,6 +1,10 @@
 # Habita · Prototipo inmobiliario
 
-**[Abrir la demo en GitHub Pages](https://geroo03.github.io/inmobiliaria-c-rdoba-3D/)**
+**[Noveno: tres departamentos en un piso 9](https://geroo03.github.io/inmobiliaria-c-rdoba-3D/noveno/)** · **[Casa Patio: construcción y recorrido](https://geroo03.github.io/inmobiliaria-c-rdoba-3D/)**
+
+**Noveno** presenta un edificio ilustrativo con tres unidades: 9A (un dormitorio), 9B (dos) y 9C (tres). Permite ver el edificio, comparar el piso completo, abrir cada departamento, recorrer sus ambientes y salir al balcón con una ciudad recreada debajo. Cada unidad y modo de vista tienen un enlace público para compartir. [Ver alcance y detalles](DEMO_NOVENO_PISO.md).
+
+Ambas demos usan modelos creados por código. Para representar una propiedad existente hay que incorporar sus planos, capturas o fotografías; estas experiencias no son levantamientos de inmuebles reales.
 
 Demo de una propiedad ficticia con dos experiencias que usan el mismo modelo 3D:
 
@@ -27,6 +31,7 @@ La abertura de la galería permite caminar al patio. Para moverse con el teclado
 - [Guía de producción real](GUIA_PRODUCCION_REAL.md): fotos comunes, panoramas 360°, captura espacial, alternativas y arquitectura propuesta.
 - [Informe del prototipo](INFORME_DEL_PROTOTIPO.md): qué se construyó, cómo funciona, archivos entregados y verificaciones realizadas.
 - [Mejoras de construcción y recorrido](MEJORAS_CONSTRUCCION_Y_RECORRIDO.md): cambios de esta versión, controles y alcance del realismo.
+- [Demo del noveno piso](DEMO_NOVENO_PISO.md): tres unidades, vistas desde altura, enlaces y preparación de una propiedad real.
 
 ## Publicación en GitHub Pages
 
@@ -58,6 +63,7 @@ El prototipo se sirve por HTTP porque usa módulos JavaScript. Todas las depende
 - `dist/construction.js`: etapas, armaduras, estructura, mampostería y elementos temporales de obra.
 - `dist/walk-navigation.js` y `dist/movement.js`: controles interiores y colisiones.
 - `dist/scene-materials.js`: texturas generadas localmente.
+- `dist/noveno/`: experiencia del edificio y los tres departamentos, con datos, modelos, entorno e interfaz propios.
 - `dist/vendor/`: Three.js 0.164.1 (licencia MIT) y DM Sans (licencia OFL); licencias incluidas.
 
 Las pruebas de colisión se ejecutan con `npm test` (Node.js 20 o posterior, sin instalar dependencias). GitHub Actions comprueba la sintaxis de los módulos y ejecuta esas pruebas antes de publicar.

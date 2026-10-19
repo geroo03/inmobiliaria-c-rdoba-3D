@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { moveWithCollisions } from './movement.js';
 
-export function createWalkNavigation({ camera, canvas, pad, obstacles, onMove }) {
+export function createWalkNavigation({ camera, canvas, pad, obstacles, onMove, bounds, eyeHeight = 1.7 }) {
   let enabled = false, yaw = 0, pitch = 0, drag = null;
   const keys = new Set(), heldButtons = new Map();
   const keyDirections = { KeyW:'forward', ArrowUp:'forward', KeyS:'back', ArrowDown:'back', KeyA:'left', ArrowLeft:'left', KeyD:'right', ArrowRight:'right' };
@@ -60,8 +60,8 @@ export function createWalkNavigation({ camera, canvas, pad, obstacles, onMove })
       if (length) {
         forward /= length; right /= length;
         const distance = Math.min(dt, .1) * 1.65;
-        const moved = moveWithCollisions(camera.position, (-Math.sin(yaw) * forward + Math.cos(yaw) * right) * distance, (-Math.cos(yaw) * forward - Math.sin(yaw) * right) * distance, obstacles);
-        camera.position.set(moved.x, 1.7, moved.z);
+        const moved = moveWithCollisions(camera.position, (-Math.sin(yaw) * forward + Math.cos(yaw) * right) * distance, (-Math.cos(yaw) * forward - Math.sin(yaw) * right) * distance, obstacles, .17, bounds);
+        camera.position.set(moved.x, eyeHeight, moved.z);
       }
       applyLook(); onMove(camera.position, yaw);
     }

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ed"><meta name="description" content="Tres departamentos de ejemplo en un noveno piso. Compará unidades, explorá el plano y recorré sus ambientes y balcones en 3D.">
+  <title>Noveno · Tres formas de vivir la ciudad — Habita</title>
+  <link rel="icon" href="../favicon.svg"><link rel="stylesheet" href="./styles.css">
+  <script type="importmap">{"imports":{"three":"../vendor/three.module.js"}}</script>
+</head>
+<body>
+  <header class="header"><a class="brand" href="../" aria-label="Habita, Casa Patio">⌂ habita<span>.</span></a><span class="brand-line">ESPACIOS PARA VIVIR</span><nav><a href="../">Ver Casa Patio ↗</a><span class="demo">Proyecto de ejemplo</span></nav></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">COLECCIÓN RESIDENCIAL / PISO 09</p><h1>La ciudad, <em>desde tu casa.</em></h1></div><p>Tres departamentos. Tres maneras de habitar.<br>Elegí el tuyo y recorré cada espacio.</p></section>
+    <section class="experience" aria-label="Explorador del edificio Noveno">
+      <div class="experience-bar"><div class="project-name">NOVENO<span>RESIDENCIAS</span></div><div class="availability"><i></i> 3 unidades en venta <span>· demo</span></div><button id="share" class="share">↗ Compartir vista</button></div>
+      <div class="explorer">
+        <div class="viewer">
+          <div class="viewer-toolbar" role="group" aria-label="Vistas del proyecto">
+            <button data-view="edificio">01 <span>Edificio</span></button><button data-view="piso" class="active">02 <span>Piso 9</span></button><button data-view="unidad">03 <span>Unidad 3D</span></button><button data-view="recorrido">04 <span>Recorrer</span></button>
+          </div>
+          <div id="stage" class="stage">
+            <canvas id="scene" tabindex="0" aria-label="Visor del noveno piso. Seleccioná una unidad desde la lista. Dentro del departamento, usá WASD o las flechas para caminar y arrastrá para mirar."></canvas>
+            <div id="loading" class="loading"><span></span>Preparando tu visita…</div>
+            <div id="error" class="error" role="alert" hidden><strong>No pudimos iniciar la visita 3D.</strong><p>Podés consultar las unidades en la lista. Para el recorrido, probá un navegador con WebGL y aceleración gráfica.</p><button onclick="location.reload()">Volver a intentar</button></div>
+            <div class="view-caption"><i></i><span id="caption">PLANTA COMPLETA / PISO 09</span></div>
+            <div class="canvas-tools"><button id="light" aria-label="Ver al atardecer" title="Cambiar iluminación">☼</button><button id="reset" aria-label="Restablecer vista" title="Restablecer vista">↺</button><button id="fullscreen" aria-label="Pantalla completa" title="Pantalla completa">⛶</button></div>
+            <div id="pins" class="pins"></div>
+            <div id="room-info" class="room-info" hidden><span id="room-unit">UNIDAD 9B</span><strong id="room-name">Living y comedor</strong></div>
+            <div id="walk-ui" hidden>
+              <div id="walk-pad" class="walk-pad" role="group" aria-label="Caminar"><button data-move="forward" aria-label="Caminar hacia adelante">↑</button><button data-move="left" aria-label="Moverse a la izquierda">←</button><button data-move="back" aria-label="Caminar hacia atrás">↓</button><button data-move="right" aria-label="Moverse a la derecha">→</button></div>
+              <div class="mini-map"><span>ESTÁS ACÁ · PISO 09</span><svg id="mini-map" aria-label="Plano del departamento"><g id="map-rooms"></g><g id="map-position" aria-hidden="true"><path d="M0 -1.1 L-.6 0 L.6 0Z" fill="#315b4c" opacity=".25"/><circle r=".22" fill="#315b4c" stroke="#fff" stroke-width=".1"/></g></svg><button id="exit-walk">↖ Ver desde arriba</button></div>
+            </div>
+            <div class="canvas-footer"><span id="hint">Arrastrá para girar · Rueda para acercar</span><span id="height-tag">NIVEL +27 M</span></div>
+          </div>
+          <div class="viewer-footer"><span class="footer-mark">↗</span><p id="view-description"><strong>Un piso completo, a tu alcance.</strong><span>Seleccioná 9A, 9B o 9C sobre la maqueta o en la lista.</span></p><button id="top-view">⊞ Plano superior</button></div>
+        </div>
+        <aside class="sidebar">
+          <div class="sidebar-title"><h2>Elegí tu departamento</h2><span>03</span></div>
+          <div id="units" class="unit-list">
+            <div class="unit-card" style="--unit-color:#a0ad91"><span class="unit-letter">9A</span><span class="unit-card-info"><strong>1 dormitorio</strong><span>87 m² · Piso 9</span><span class="status">Disponible · demo</span></span></div>
+            <div class="unit-card" style="--unit-color:#bfa387"><span class="unit-letter">9B</span><span class="unit-card-info"><strong>2 dormitorios</strong><span>108,8 m² · Piso 9</span><span class="status">Disponible · demo</span></span></div>
+            <div class="unit-card" style="--unit-color:#8b9eaa"><span class="unit-letter">9C</span><span class="unit-card-info"><strong>3 dormitorios</strong><span>136 m² · Piso 9</span><span class="status">Disponible · demo</span></span></div>
+          </div>
+          <div class="unit-detail"><div class="detail-kicker"><span id="unit-label">UNIDAD 9B</span><span>BALCÓN AL FRENTE</span></div><h3 id="unit-name">Espacio para compartir</h3><p id="unit-description"></p><dl class="metrics"><div><dt>Totales aprox.</dt><dd id="total-area"></dd></div><div><dt>Dormitorios</dt><dd id="bedrooms"></dd></div><div><dt>Balcón</dt><dd id="balcony-area"></dd></div></dl><button id="enter-unit" class="primary">Entrar al departamento <span>↗</span></button><p class="price-note">Valor a consultar · Disponibilidad ilustrativa</p></div>
+          <div class="rooms-section"><p class="eyebrow">IR DIRECTO A UN AMBIENTE</p><div id="rooms" class="room-list"></div></div>
+        </aside>
+      </div>
+    </section>
+    <div id="share-message" class="toast" role="status" aria-live="polite" hidden></div>
+    <div id="share-fallback" class="share-fallback" hidden><label for="share-url">Copiá este enlace público:</label><input id="share-url" readonly><button id="close-share">Cerrar</button></div>
+    <section class="details"><div><span class="section-number">01 / LA EXPERIENCIA</span><h2>Del plano al balcón.<br><em>Sin salir de donde estás.</em></h2></div><div class="detail-text"><p>Explorá el edificio, compará las tres distribuciones y entrá a cada ambiente. En el balcón, mirá hacia abajo para sentir la altura del noveno piso.</p><p class="controls-copy"><strong>En PC:</strong> arrastrá para mirar y usá WASD o las flechas para caminar. <strong>En celular:</strong> mirá con un dedo y mantené pulsados los botones de dirección.</p></div></section>
+    <section class="reality-note"><div><span class="note-dot"></span><strong>Así se presenta el proyecto. La propiedad real es el siguiente paso.</strong></div><p>Este edificio, sus departamentos y el entorno son una recreación ilustrativa. Para visitar un inmueble real, se incorporan sus planos medidos, fotos 360° o una captura 3D. Esta demo no incluye fotografías ni vistas verificadas de una propiedad existente.</p></section>
+  </main>
+  <footer><span>habita. <em>Imaginá tu próxima perspectiva.</em></span><span>Noveno · Demo interactiva · Superficies aproximadas</span></footer>
+  <noscript><p>Activá JavaScript para seleccionar unidades y usar el recorrido.</p></noscript>
+  <script type="module">import('./app.js').catch(error=>{console.error(error);document.getElementById('loading').hidden=true;document.getElementById('error').hidden=false;document.querySelectorAll('button').forEach(button=>{if(!button.closest('#error'))button.disabled=true;});});</script>
+</body>
+</html>
